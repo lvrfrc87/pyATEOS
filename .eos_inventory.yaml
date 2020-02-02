@@ -1,0 +1,6 @@
+localhost:
+  username: admin
+  password: admin
+  protocol: https
+  port: 443
+  verify_ssl: false
