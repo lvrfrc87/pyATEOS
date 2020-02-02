@@ -4,3 +4,8 @@ localhost:
   protocol: https
   port: 443
   verify_ssl: false
+test:
+  username: cisco
+  password: cisco
+  protocol: http
+  port: 8080
