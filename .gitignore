@@ -3,3 +3,6 @@ include
 lib
 .Python
 pip-selfcheck.json
+plugins/__pycache__
+after.txt
+before.txt
