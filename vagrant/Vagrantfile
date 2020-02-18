@@ -1,0 +1,17 @@
+Vagrant.configure("2") do |config|
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--cpuexecutioncap", "80"]
+  end
+
+VEOS = "vEOS-lab-4.21.1.1F"
+
+  config.vm.define "lf1.arista.ams" do |lf1|
+    lf1.vm.box = VEOS
+    lf1.vm.network :forwarded_port, guest: 22, host: 23201, id: 'ssh'
+    lf1.vm.network :forwarded_port, guest: 80, host: 2380, id: 'http'
+    lf1.vm.network "private_network", virtualbox__intnet: "link_1", ip: "169.254.1.31", auto_config: false
+    lf1.vm.network "private_network", virtualbox__intnet: "link_5", ip: "169.254.5.31", auto_config: false
+    lf1.vm.network "private_network", virtualbox__intnet: "link_9", ip: "169.254.9.31", auto_config: false
+    lf1.vm.network "private_network", virtualbox__intnet: "link_10", ip: "169.254.10.31", auto_config: false
+  end
+end

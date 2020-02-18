@@ -1,0 +1,214 @@
+{
+    "hosts": [
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "",
+            "protocolVersion": "v3",
+            "hostname": "10.226.234.116",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.226.234.116",
+            "notificationType": "trap",
+            "port": 133
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.226.234.117",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.226.234.117",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.226.236.4",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.226.236.4",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.227.234.116",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.227.234.116",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.128.200",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.128.200",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.128.215",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.128.215",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.5.196",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.5.196",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.5.202",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.5.202",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.74.120.238",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.78.65.127",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "10.78.65.18",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "29.0.2.100",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "tmcpub"
+            },
+            "vrf": "",
+            "protocolVersion": "v2c",
+            "hostname": "29.0.3.100",
+            "notificationType": "trap",
+            "port": 162
+        }
+    ]
+}

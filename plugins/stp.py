@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-class Ntp():
+class Stp():
 
     def __init__(self, node):
         self.node = node
 
     @property
-    def associations(self):
+    def topology(self):
 
-        cmd = self.node.enable('show ntp associations')
+        cmd = self.node.enable('show spanning-tree topology status')
         result = cmd[0]['result']
 
         return result

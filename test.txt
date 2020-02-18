@@ -1,0 +1,8 @@
+peers: ns2.sys.cloudsys.tmcs
+peerIpAddr: 10.75.33.5
+stratumLevel: 3
+reachabilityHistory: True
+peers: ns1.sys.cloudsys.tmcs
+peerIpAddr: 10.75.32.5
+stratumLevel: 3
+reachabilityHistory: True
