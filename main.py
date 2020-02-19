@@ -2,12 +2,15 @@
 import os
 import sys
 import time
+import json
 import argparse
 import threading
 from jsondiff import diff
+from pprint import pprint
 from pyeapi import load_config
 from pyeapi import connect_to
-from plugins import *
+from plugins.ntp import Ntp
+from plugins.snmp import Snmp
 
 def arguments():
     # Add mutually exclusive
@@ -46,6 +49,12 @@ def arguments():
         )
 
     parser.add_argument(
+        '--test',
+        dest='test',
+        help="run a specific test"
+        )
+
+    parser.add_argument(
         '--mgmt',
         dest='mgmt',
         action='store_true',
@@ -55,8 +64,15 @@ def arguments():
     parser.add_argument(
         '--all',
         dest='all',
-        action='store_false',
+        action='store_true',
         help="run All kind of test"
+        )
+
+    parser.add_argument(
+        '--compare',
+        dest='compare',
+        action='store_true',
+        help="compare before vs. after"
         )
 
     return parser.parse_args()
@@ -66,12 +82,12 @@ def flags(args):
 
     returned_dict = dict()
 
-    if args.before:
-        folder = 'before'
-        file_name = round(time.time())
-    elif args.after:
-        folder = 'after'
-        file_name = round(time.time())
+    # if args.before:
+    #     folder = 'before'
+    #     file_name = round(time.time())
+    # elif args.after:
+    #     folder = 'after'
+    #     file_name = round(time.time())
 
     if args.inventory:
         inventory = args.inventory
@@ -79,95 +95,105 @@ def flags(args):
         inventory = 'eos_inventory.ini'
 
     returned_dict.update(
-        folder=folder,
-        file_name=file_name,
         inventory=inventory,
         node=args.node,
         mgmt=args.mgmt,
-        all=args.all
+        all=args.all,
+        test=args.test,
+        before=args.before,
+        after=args.after,
+        compare=args.compare
         )
 
     return returned_dict
 
 
-# def thread_cmd():
-#     cmd_threads = list()
-#     az = os.environ['AZ']
-#     for region, target_list in dic_targets.items():
-#         if region == az:
-#             for target in target_list:
-#                 thread_targets = threading.Thread(target=influxdb_call, args=(target, region))
-#                 thread_targets.start()
-#                 ping_threads.append(thread_targets)
-#         else:
-#             pass
+def filesystem_build():
+    folders_test = [
+        'ntp'
+    ]
 
-def test_list(flag, node):
+    if not os.path.exists(PWD_BEFORE):
+        os.makedirs(PWD_BEFORE)
 
-    my_test_list = list()
+    if not os.path.exists(PWD_AFTER):
+        os.makedirs(PWD_AFTER)
 
-    if flag == 'mgmt':
-        ntp_test = ntp.Ntp(node).associations
-        snmp_test = snmp.Snmp(node).host
+    for test in folders_test:
+        if not os.path.exists(PWD_BEFORE + '/' + test) :
+            os.makedirs(PWD_BEFORE + '/' + test)
 
-        return ntp, snmp
+        if not os.path.exists(PWD_AFTER + '/' + test) :
+            os.makedirs(PWD_AFTER + '/' + test)
 
-    elif flag == 'all':
-        ntp = ntp.Ntp(node).associations
-        snmp = snmp.Snmp(node).host
-        iface = iface.Interfaces(node).show
-        stp = stp.Stp(node).topology
-        vlans = vlans.Vlans(node).show
-        vrfs = vrfs.Vrfs(node).show
-        vxlan = vxlan.Vxlan(node).vni
-        acls = acls.Acl(node).show
-        prefix_lists = prefix_lists.PrefixList(node).show
-        route_maps = route_maps.RouteMap(node).show
-        as_path =route_maps. AsPath(node).show
-        mlag = mlag.Mlag(node).show
-        ip_route = ip_route.IpRoute(node).show
-        bgp_ipv4 = bgp_ipv4.BgpIpv4(node).show
-        bgp_evpn = bgp_evpn.BgpEvpn(node).show
+        if not os.path.exists(PWD_DIFF + '/' + test) :
+            os.makedirs(PWD_DIFF + '/' + test)
 
+def test_ntp(node):
+    print('Run NTP operational test')
+    ntp = Ntp(node).associations
+
+    return ntp
+
+
+def write_before(test, node, result):
+    with open('{}/{}/{}_{}.json'.format(PWD_BEFORE,test, test, node), 'w', encoding='utf-8') as file:
+        json.dump(result, file, ensure_ascii=False, indent=4)
+
+
+def write_after(test, node, result):
+    with open('{}/{}/{}_{}.json'.format(PWD_AFTER,test, test, node), 'w', encoding='utf-8') as file:
+        json.dump(result, file, ensure_ascii=False, indent=4)
+
+
+def test_ntp(connect_node):
+    print("Run operational test for NTP servers")
+    ntp = Ntp(connect_node).associations
+
+    return ntp
 
 
 def main():
 
     my_flags = flags(arguments())
 
-    inventory = load_config(my_flags.get('inventory'))
-    node = connect_to(my_flags.get('node')[0])
-    folder_path =  os.getcwd() + '/' + my_flags.get('folder')
+    inventory = my_flags.get('inventory')
+    node = my_flags.get('node')[0]
+    mgmt = my_flags.get('mgmt')
+    all = my_flags.get('all')
+    test = my_flags.get('test')
+    before = my_flags.get('before')
+    after = my_flags.get('after')
+    compare = my_flags.get('compare')
 
-    if my_flags.get('mgmt'):
-        flag = 'mgmt'
-    elif my_flags.get('all'):
-        flag = 'all'
+    load_inventory = load_config(inventory)
+    connect_node = connect_to(node)
 
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-
-    print(ntp.Ntp(node).associations)
-
-
-    print(test_list(flag, node))
+    if test:
+        if test == 'ntp':
+            if before:
+                write_before('ntp', node, test_ntp(connect_node))
+            if after:
+                write_before('ntp', node, test_ntp(connect_node))
 
 
 
-    # TO DO - mutlithreading
+    if compare:
+        before = open('{}/ntp/ntp_{}.json'.format(PWD_BEFORE, node), 'r')
+        after = open('{}/ntp/ntp_{}.json'.format(PWD_AFTER, node), 'r')
+        json_diff = str(diff(before, after, load=True, syntax='symmetric'))
+        edit_json_diff = json_diff.replace('\'', '\"').replace('insert','"insert"').replace('delete','"delete"').replace('[','"[').replace(']', ']"')
+        b = json.loads(edit_json_diff)
+        print(json.dumps(b, indent=4))
 
-    # # final_list = ntp + snmp + iface
-    # final_list = ntp
-    #
-    # file = open('{}.txt'.format(sys.argv[1]),'w')
-    #
-    # for i in final_list:
-    #     file.write(str(i))
-    # file.close()
-    #
-    # text1 = open("before.txt").readlines()
-    # text2 = open("after.txt").readlines()
+        with open('{}/ntp/ntp_{}.json'.format(PWD_DIFF, node), 'w', encoding='utf-8') as file:
+            json.dump(b, file, ensure_ascii=False, indent=4)
 
 
 if __name__ == '__main__':
+    PWD_BEFORE = os.getcwd() + '/' + 'before'
+    PWD_AFTER = os.getcwd() + '/' + 'after'
+    PWD_DIFF = os.getcwd() + '/' + 'diff'
+
+    filesystem_build()
     main()
