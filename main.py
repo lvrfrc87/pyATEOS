@@ -1,78 +1,161 @@
 #!/usr/bin/env python3
+import os
 import sys
 import time
 import argparse
+import threading
+from jsondiff import diff
 from pyeapi import load_config
 from pyeapi import connect_to
-# from plugins.acl import Acl
-# from plugins.as_path import AsPath
-# from plugins.bgp_evpn import BgpEvpn
-# from plugins.bgp_ipv4 import BgpIpv4
-# from plugins.interfaces import Interfaces
-# from plugins.ip_routes import IpRoutes
-# from plugins.mlag import Mlag
-# from plugins.ntp import Ntp
-# from plugins.prefix_lists import PrefixLists
-# from plugins.route_maps import RouteMaps
-# from plugins.snmp import Snmp
-# from plugins.stp import Stp
-# from plugins.vlans import Vlans
-# from plugins.vrfs import Vrfs
-# from plugins.vxlans import Vxlans
 from plugins import *
-# from colorama import Fore, Back, Style, init
+
+def arguments():
+    # Add mutually exclusive
+    # parser.add_argument('--routing', dest='routing', action='store_true', help="run only Routing Protocol test")
+    # parser.add_argument('--iface', dest='iface', action='store_true', help="run only Interface test")
+    parser = argparse.ArgumentParser(
+        description="pyATEOS - A simple python application for operational status test on Arista device."
+        )
+
+    parser.add_argument(
+        '--inventory',
+        dest='inventory',
+        help="inventory file"
+        )
+
+    parser.add_argument(
+        '--node',
+        dest='node',
+        help="specify inventory node",
+        nargs='+',
+        required=True
+        )
+
+    parser.add_argument(
+        '--before',
+        dest='before',
+        action='store_true',
+        help="json file containing the test result BEFORE the conifg-change"
+        )
+
+    parser.add_argument(
+        '--after',
+        dest='after',
+        action='store_true',
+        help="json file containing the test result AFTER the conifg-change"
+        )
+
+    parser.add_argument(
+        '--mgmt',
+        dest='mgmt',
+        action='store_true',
+        help="run only Management test"
+        )
+
+    parser.add_argument(
+        '--all',
+        dest='all',
+        action='store_false',
+        help="run All kind of test"
+        )
+
+    return parser.parse_args()
+
+
+def flags(args):
+
+    returned_dict = dict()
+
+    if args.before:
+        folder = 'before'
+        file_name = round(time.time())
+    elif args.after:
+        folder = 'after'
+        file_name = round(time.time())
+
+    if args.inventory:
+        inventory = args.inventory
+    else:
+        inventory = 'eos_inventory.ini'
+
+    returned_dict.update(
+        folder=folder,
+        file_name=file_name,
+        inventory=inventory,
+        node=args.node,
+        mgmt=args.mgmt,
+        all=args.all
+        )
+
+    return returned_dict
+
+
+# def thread_cmd():
+#     cmd_threads = list()
+#     az = os.environ['AZ']
+#     for region, target_list in dic_targets.items():
+#         if region == az:
+#             for target in target_list:
+#                 thread_targets = threading.Thread(target=influxdb_call, args=(target, region))
+#                 thread_targets.start()
+#                 ping_threads.append(thread_targets)
+#         else:
+#             pass
+
+def test_list(flag, node):
+
+    my_test_list = list()
+
+    if flag == 'mgmt':
+        ntp_test = ntp.Ntp(node).associations
+        snmp_test = snmp.Snmp(node).host
+
+        return ntp, snmp
+
+    elif flag == 'all':
+        ntp = ntp.Ntp(node).associations
+        snmp = snmp.Snmp(node).host
+        iface = iface.Interfaces(node).show
+        stp = stp.Stp(node).topology
+        vlans = vlans.Vlans(node).show
+        vrfs = vrfs.Vrfs(node).show
+        vxlan = vxlan.Vxlan(node).vni
+        acls = acls.Acl(node).show
+        prefix_lists = prefix_lists.PrefixList(node).show
+        route_maps = route_maps.RouteMap(node).show
+        as_path =route_maps. AsPath(node).show
+        mlag = mlag.Mlag(node).show
+        ip_route = ip_route.IpRoute(node).show
+        bgp_ipv4 = bgp_ipv4.BgpIpv4(node).show
+        bgp_evpn = bgp_evpn.BgpEvpn(node).show
+
 
 
 def main():
 
-    # Add mutually exclusive
-    # parser = argparse.ArgumentParser(description="pyATEOS - A simple python application for operational status test on Arista device.")
-    # parser.add_argument('--before', dest='before', help="json file containing the test result BEFORE the conifg-change",type=str)
-    # parser.add_argument('--after', dest='after', help="json file containing the test result AFTER the conifg-change", type= str)
-    # parser.add_argument('--mgmt', dest='mgmt', action='store_true',help="run only Management test")
-    # parser.add_argument('--routing', dest='routing', action='store_true', help="run only Routing Protocol test")
-    # parser.add_argument('--iface', dest='iface', action='store_true', help="run only Interface test")
-    # parser.add_argument('--all', dest='all', action='store_false', help="run All kind of test")
-    # parser.add_argument('--inventory', dest='inventory', help="inventory file")
-    #
-    # args = parser.parse_args()
-    #
-    # before = args.before
-    # after = args.after
-    # mgmt = args.mgmt
-    # routing = args.routing
-    # iface = args.iface
-    # all = args.all
-    #
-    # if args.inventory:
-    #     inventory = load_config(args.inventory)
-    # else:
-    #     inventory = load_config('eos_inventory.ini')
+    my_flags = flags(arguments())
 
-    inventory = load_config('eos_inventory.ini')
-    node = connect_to('svc1a')
+    inventory = load_config(my_flags.get('inventory'))
+    node = connect_to(my_flags.get('node')[0])
+    folder_path =  os.getcwd() + '/' + my_flags.get('folder')
+
+    if my_flags.get('mgmt'):
+        flag = 'mgmt'
+    elif my_flags.get('all'):
+        flag = 'all'
+
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
 
     print(ntp.Ntp(node).associations)
 
-    # print(plugins.ntp.Ntp(node).associations)
+
+    print(test_list(flag, node))
+
 
 
     # TO DO - mutlithreading
-    # ntp = Ntp(node).associations
-    # snmp = Snmp(node).host
-    # iface = Interfaces(node).show
-    # stp = Stp(node).topology
-    # vlans = Vlans(node).show
-    # vrfs = Vrfs(node).show
-    # vxlan = Vxlan(node).vni
-    # acls = Acl(node).show
-    # prefix_lists = PrefixList(node).show
-    # route_maps = RouteMap(node).show
-    # as_path = AsPath(node).show
-    # mlag = Mlag(node).show
-    # ip_route = IpRoute(node).show
-    # bgp_ipv4 = BgpIpv4(node).show
-    # bgp_evpn = BgpEvpn(node).show
+
     # # final_list = ntp + snmp + iface
     # final_list = ntp
     #
@@ -85,23 +168,6 @@ def main():
     # text1 = open("before.txt").readlines()
     # text2 = open("after.txt").readlines()
 
-# diff = difflib.unified_diff(
-#     text1,
-#     text2,
-#     fromfile='before.txt',
-#     tofile='after.txt',
-#     lineterm='',
-#     n=0)
-#
-# for line in diff:
-#     if line.startswith('+'):
-#         print(Fore.GREEN + line.strip('\n') + Fore.RESET)
-#     elif line.startswith('-'):
-#         print(Fore.RED + line.strip('\n') + Fore.RESET)
-#     elif line.startswith('^'):
-#         print(Fore.BLUE + line.strip('\n') + Fore.RESET)
-#     else:
-#         print(line.strip('\n'))
 
 if __name__ == '__main__':
     main()
