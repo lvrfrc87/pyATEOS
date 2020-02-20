@@ -3,15 +3,15 @@ __all__ = [
     'as_path',
     'bgp_evpn',
     'bgp_ipv4',
-    'interfaces',
-    'ip_routes',
+    'interface',
+    'ip_route',
     'mlag',
     'ntp',
-    'prefix_lists',
-    'route_maps',
+    'prefix_list',
+    'route_map',
     'snmp',
     'stp',
-    'vlans',
-    'vrfs',
-    'vxlans'
+    'vlan',
+    'vrf',
+    'vxlan'
 ]

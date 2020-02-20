@@ -5,13 +5,25 @@ import sys
 import time
 import json
 import argparse
-import threading
 from jsondiff import diff
 from pprint import pprint
 from pyeapi import load_config
 from pyeapi import connect_to
-from plugins.ntp import Ntp
-from plugins.snmp import Snmp
+from plugins import acl
+from plugins import as_path
+from plugins import bgp_evpn
+from plugins import bgp_ipv4
+from plugins import interface
+from plugins import ip_route
+from plugins import mlag
+from plugins.ntp import ntp
+from plugins import prefix_list
+from plugins import route_map
+from plugins import snmp
+from plugins import stp
+from plugins import vlan
+from plugins import vrf
+from plugins import vxlan
 
 def arguments():
     # Add mutually exclusive
@@ -83,13 +95,6 @@ def flags(args):
 
     returned_dict = dict()
 
-    # if args.before:
-    #     folder = 'before'
-    #     file_name = round(time.time())
-    # elif args.after:
-    #     folder = 'after'
-    #     file_name = round(time.time())
-
     if args.inventory:
         inventory = args.inventory
     else:
@@ -109,63 +114,30 @@ def flags(args):
     return returned_dict
 
 
-# def filesystem_build():
-#     folders_test = [
-#         'ntp'
-#     ]
-
-#     if not os.path.exists(self.pwd_before):
-#         os.makedirs(self.pwd_before)
-
-#     if not os.path.exists(self.pwd_after):
-#         os.makedirs(self.pwd_after)
-
-#     for test in folders_test:
-#         if not os.path.exists(self.pwd_before + '/' + test) :
-#             os.makedirs(self.pwd_before + '/' + test)
-
-#         if not os.path.exists(self.pwd_after + '/' + test) :
-#             os.makedirs(self.pwd_after + '/' + test)
-
-#         if not os.path.exists(self.pwd_diff + '/' + test) :
-#             os.makedirs(self.pwd_diff + '/' + test)
-
-
 class WriteFile():
     def __init__(self, test, node):
         self.test = test
         self.node = node
-        self.pwd_before = os.getcwd() + '/' + 'before'
-        self.pwd_after = os.getcwd() + '/' + 'after'
-        self.pwd_diff = os.getcwd() + '/' + 'diff'
-        folders_test = [
-        'ntp',
-        'snmp'
-        ]
+        self.pwd_before = os.getcwd() + '/before/{}'.format(self.test)
+        self.pwd_after = os.getcwd() + '/after/{}'.format(self.test)
+        self.pwd_diff = os.getcwd() + '/diff/{}'.format(self.test)
 
-        if not os.path.exists(self.pwd_before):
+        if not os.path.exists(self.pwd_before) :
             os.makedirs(self.pwd_before)
 
         if not os.path.exists(self.pwd_after):
             os.makedirs(self.pwd_after)
 
-        for test in folders_test:
-            if not os.path.exists(self.pwd_before + '/' + test) :
-                os.makedirs(self.pwd_before + '/' + test)
+        if not os.path.exists(self.pwd_diff) :
+            os.makedirs(self.pwd_diff)  
 
-            if not os.path.exists(self.pwd_after + '/' + test) :
-                os.makedirs(self.pwd_after + '/' + test)
-
-            if not os.path.exists(self.pwd_diff + '/' + test) :
-                os.makedirs(self.pwd_diff + '/' + test)  
-    
     def write_before(self, result):
-        with open('{}/{}/{}_{}.json'.format(self.pwd_before, self.test, self.test, self.node), 'w', encoding='utf-8') as file:
+        with open('{}/{}_{}.json'.format(self.pwd_before, self.test, self.node), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
 
 
     def write_after(self, result):
-        with open('{}/{}/{}_{}.json'.format(self.pwd_after, self.test, self.test, self.node), 'w', encoding='utf-8') as file:
+        with open('{}/{}_{}.json'.format(self.pwd_after, self.test, self.node), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
 
 
@@ -188,14 +160,23 @@ class WriteFile():
             ')':']'
             }
 
-        before = open('{}/{}/{}_{}.json'.format(self.pwd_before, self.test, self.test, self.node), 'r')
-        after = open('{}/{}/{}_{}.json'.format(self.pwd_after, self.test, self.test, self.node), 'r')
+        try:
+            before = open('{}/{}_{}.json'.format(self.pwd_before, self.test, self.node), 'r')
+        except FileNotFoundError as error:
+            print(error)
+            sys.exit(1)
+        
+        try:
+            after = open('{}/{}_{}.json'.format(self.pwd_after, self.test, self.node), 'r')
+        except FileNotFoundError as error:
+            print(error)        
+            sys.exit(1)
         
         json_diff = str(diff(before, after, load=True, syntax='symmetric'))
         edit_json_diff = replace(json_diff, substitutions)
         final_diff = json.loads(edit_json_diff)
 
-        with open('{}/{}/{}_{}.json'.format(self.pwd_diff, self.test, self.test, self.node), 'w', encoding='utf-8') as file:
+        with open('{}/{}_{}.json'.format(self.pwd_diff, self.test, self.node), 'w', encoding='utf-8') as file:
             json.dump(final_diff, file, ensure_ascii=False, indent=4)
 
 
@@ -204,7 +185,7 @@ def main():
     my_flags = flags(arguments())
 
     inventory = my_flags.get('inventory')
-    node = my_flags.get('node')[0]
+    node = my_flags.get('node')[0]    
     mgmt = my_flags.get('mgmt')
     all = my_flags.get('all')
     test = my_flags.get('test')
@@ -215,22 +196,37 @@ def main():
     load_inventory = load_config(inventory)
     connect_node = connect_to(node)
 
+
+    test_list = [
+        'acl',
+        'as_path',
+        'bgp_evpn',
+        'bgp_ipv4',
+        'interface',
+        'ip_route',
+        'mlag',
+        'ntp',
+        'prefix_list',
+        'route_map',
+        'snmp',
+        'stp',
+        'vlan',
+        'vrf',
+        'vxlan'
+    ]
+
     if test:
-        if test == 'ntp':
+        if test in test_list:
             if before:
-                wr_before = WriteFile('ntp', node)
-                wr_before.write_before(Ntp(connect_node).associations)
-                # write_before('ntp', node, Ntp(connect_node).associations)
-
-            if after:
-                # write_after('ntp', node, Ntp(connect_node).associations)
-                wr_after = WriteFile('ntp', node)
-                wr_after.write_after(Ntp(connect_node).associations)
-
-            if compare:
-                wr_diff = WriteFile('ntp', node)
+                wr_before = WriteFile(test, node)
+                wr_before.write_before(eval(test)(connect_node).show)
+            elif after:
+                wr_after = WriteFile(test, node)
+                wr_after.write_after(eval(test)(connect_node).show)
+            elif compare:
+                wr_diff = WriteFile(test, node)
                 wr_diff.write_diff()
-
+    
 
 if __name__ == '__main__':
     main()

@@ -7,7 +7,7 @@ class IpRoutes():
     @property
     def show(self):
 
-        cmd = self.node.enable('show ip route details')
+        cmd = self.node.enable('show ip route detail')
         result = cmd[0]['result']
 
         return result

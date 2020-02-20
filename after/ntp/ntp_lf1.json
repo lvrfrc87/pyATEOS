@@ -1,46 +1,64 @@
 {
     "peers": {
-        "ns2.sys.cloudsys.tmcs": {
-            "delay": 28.735,
-            "jitter": 30471.728,
-            "lastReceived": 1582193541.0,
-            "peerType": "unicast",
-            "reachabilityHistory": [
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
-            ],
-            "condition": "reject",
-            "offset": 339682.219,
-            "peerIpAddr": "10.75.33.5",
-            "pollInterval": 64,
-            "refid": "169.254.0.1",
-            "stratumLevel": 3
-        },
         "ns1.sys.cloudsys.tmcs": {
-            "delay": 76.655,
-            "jitter": 30675.231,
-            "lastReceived": 1582193543.0,
+            "delay": 0.0,
+            "jitter": 0.0,
+            "lastReceived": 2085978496.0,
             "peerType": "unicast",
             "reachabilityHistory": [
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
                 true
             ],
             "condition": "reject",
-            "offset": 339941.515,
+            "offset": 0.0,
             "peerIpAddr": "10.75.32.5",
-            "pollInterval": 64,
-            "refid": "169.254.0.1",
-            "stratumLevel": 3
+            "pollInterval": 1024,
+            "refid": ".INIT.",
+            "stratumLevel": 16
+        },
+        "ns2.sys.cloudsys.tmcs": {
+            "delay": 0.0,
+            "jitter": 0.0,
+            "lastReceived": 2085978496.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": 0.0,
+            "peerIpAddr": "10.75.33.5",
+            "pollInterval": 1024,
+            "refid": ".INIT.",
+            "stratumLevel": 16
+        },
+        "lyla.preshweb.co.uk": {
+            "delay": 0.0,
+            "jitter": 0.0,
+            "lastReceived": 2085978496.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": 0.0,
+            "peerIpAddr": "83.170.75.28",
+            "pollInterval": 1024,
+            "refid": ".INIT.",
+            "stratumLevel": 16
+        },
+        "x.ns.gin.ntt.net": {
+            "delay": 0.0,
+            "jitter": 0.0,
+            "lastReceived": 2085978496.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": 0.0,
+            "peerIpAddr": "129.250.35.250",
+            "pollInterval": 1024,
+            "refid": ".INIT.",
+            "stratumLevel": 16
         }
     }
 }
