@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import re
 import sys
 import time
 import json
@@ -108,49 +109,94 @@ def flags(args):
     return returned_dict
 
 
-def filesystem_build():
-    folders_test = [
-        'ntp'
-    ]
+# def filesystem_build():
+#     folders_test = [
+#         'ntp'
+#     ]
 
-    if not os.path.exists(PWD_BEFORE):
-        os.makedirs(PWD_BEFORE)
+#     if not os.path.exists(self.pwd_before):
+#         os.makedirs(self.pwd_before)
 
-    if not os.path.exists(PWD_AFTER):
-        os.makedirs(PWD_AFTER)
+#     if not os.path.exists(self.pwd_after):
+#         os.makedirs(self.pwd_after)
 
-    for test in folders_test:
-        if not os.path.exists(PWD_BEFORE + '/' + test) :
-            os.makedirs(PWD_BEFORE + '/' + test)
+#     for test in folders_test:
+#         if not os.path.exists(self.pwd_before + '/' + test) :
+#             os.makedirs(self.pwd_before + '/' + test)
 
-        if not os.path.exists(PWD_AFTER + '/' + test) :
-            os.makedirs(PWD_AFTER + '/' + test)
+#         if not os.path.exists(self.pwd_after + '/' + test) :
+#             os.makedirs(self.pwd_after + '/' + test)
 
-        if not os.path.exists(PWD_DIFF + '/' + test) :
-            os.makedirs(PWD_DIFF + '/' + test)
-
-def test_ntp(node):
-    print('Run NTP operational test')
-    ntp = Ntp(node).associations
-
-    return ntp
+#         if not os.path.exists(self.pwd_diff + '/' + test) :
+#             os.makedirs(self.pwd_diff + '/' + test)
 
 
-def write_before(test, node, result):
-    with open('{}/{}/{}_{}.json'.format(PWD_BEFORE,test, test, node), 'w', encoding='utf-8') as file:
-        json.dump(result, file, ensure_ascii=False, indent=4)
+class WriteFile():
+    def __init__(self, test, node):
+        self.test = test
+        self.node = node
+        self.pwd_before = os.getcwd() + '/' + 'before'
+        self.pwd_after = os.getcwd() + '/' + 'after'
+        self.pwd_diff = os.getcwd() + '/' + 'diff'
+        folders_test = [
+        'ntp',
+        'snmp'
+        ]
+
+        if not os.path.exists(self.pwd_before):
+            os.makedirs(self.pwd_before)
+
+        if not os.path.exists(self.pwd_after):
+            os.makedirs(self.pwd_after)
+
+        for test in folders_test:
+            if not os.path.exists(self.pwd_before + '/' + test) :
+                os.makedirs(self.pwd_before + '/' + test)
+
+            if not os.path.exists(self.pwd_after + '/' + test) :
+                os.makedirs(self.pwd_after + '/' + test)
+
+            if not os.path.exists(self.pwd_diff + '/' + test) :
+                os.makedirs(self.pwd_diff + '/' + test)  
+    
+    def write_before(self, result):
+        with open('{}/{}/{}_{}.json'.format(self.pwd_before, self.test, self.test, self.node), 'w', encoding='utf-8') as file:
+            json.dump(result, file, ensure_ascii=False, indent=4)
 
 
-def write_after(test, node, result):
-    with open('{}/{}/{}_{}.json'.format(PWD_AFTER,test, test, node), 'w', encoding='utf-8') as file:
-        json.dump(result, file, ensure_ascii=False, indent=4)
+    def write_after(self, result):
+        with open('{}/{}/{}_{}.json'.format(self.pwd_after, self.test, self.test, self.node), 'w', encoding='utf-8') as file:
+            json.dump(result, file, ensure_ascii=False, indent=4)
 
 
-def test_ntp(connect_node):
-    print("Run operational test for NTP servers")
-    ntp = Ntp(connect_node).associations
+    def write_diff(self):
+        
+        def replace(string, substitutions):
 
-    return ntp
+            substrings = sorted(substitutions, key=len, reverse=True)
+            regex = re.compile('|'.join(map(re.escape, substrings)))
+
+            return regex.sub(lambda match: substitutions[match.group(0)], string)
+
+        substitutions = {
+            '\'':'\"', 
+            'insert':'"insert"', 
+            'delete':'"delete"', 
+            'True':'true', 
+            'False':'false',
+            '(':'[',
+            ')':']'
+            }
+
+        before = open('{}/{}/{}_{}.json'.format(self.pwd_before, self.test, self.test, self.node), 'r')
+        after = open('{}/{}/{}_{}.json'.format(self.pwd_after, self.test, self.test, self.node), 'r')
+        
+        json_diff = str(diff(before, after, load=True, syntax='symmetric'))
+        edit_json_diff = replace(json_diff, substitutions)
+        final_diff = json.loads(edit_json_diff)
+
+        with open('{}/{}/{}_{}.json'.format(self.pwd_diff, self.test, self.test, self.node), 'w', encoding='utf-8') as file:
+            json.dump(final_diff, file, ensure_ascii=False, indent=4)
 
 
 def main():
@@ -172,28 +218,19 @@ def main():
     if test:
         if test == 'ntp':
             if before:
-                write_before('ntp', node, test_ntp(connect_node))
+                wr_before = WriteFile('ntp', node)
+                wr_before.write_before(Ntp(connect_node).associations)
+                # write_before('ntp', node, Ntp(connect_node).associations)
+
             if after:
-                write_before('ntp', node, test_ntp(connect_node))
+                # write_after('ntp', node, Ntp(connect_node).associations)
+                wr_after = WriteFile('ntp', node)
+                wr_after.write_after(Ntp(connect_node).associations)
 
-
-
-    if compare:
-        before = open('{}/ntp/ntp_{}.json'.format(PWD_BEFORE, node), 'r')
-        after = open('{}/ntp/ntp_{}.json'.format(PWD_AFTER, node), 'r')
-        json_diff = str(diff(before, after, load=True, syntax='symmetric'))
-        edit_json_diff = json_diff.replace('\'', '\"').replace('insert','"insert"').replace('delete','"delete"').replace('[','"[').replace(']', ']"')
-        b = json.loads(edit_json_diff)
-        print(json.dumps(b, indent=4))
-
-        with open('{}/ntp/ntp_{}.json'.format(PWD_DIFF, node), 'w', encoding='utf-8') as file:
-            json.dump(b, file, ensure_ascii=False, indent=4)
+            if compare:
+                wr_diff = WriteFile('ntp', node)
+                wr_diff.write_diff()
 
 
 if __name__ == '__main__':
-    PWD_BEFORE = os.getcwd() + '/' + 'before'
-    PWD_AFTER = os.getcwd() + '/' + 'after'
-    PWD_DIFF = os.getcwd() + '/' + 'diff'
-
-    filesystem_build()
     main()

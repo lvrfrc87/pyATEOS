@@ -1,0 +1,64 @@
+{
+    "peers": {
+        "ns1.sys.cloudsys.tmcs": {
+            "delay": 31.733,
+            "jitter": 3.906,
+            "lastReceived": 1582193601.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": 346940.839,
+            "peerIpAddr": "10.75.32.5",
+            "pollInterval": 64,
+            "refid": "169.254.0.1",
+            "stratumLevel": 3
+        },
+        "ns2.sys.cloudsys.tmcs": {
+            "delay": 54.845,
+            "jitter": 3.906,
+            "lastReceived": 1582193602.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": 347060.892,
+            "peerIpAddr": "10.75.33.5",
+            "pollInterval": 64,
+            "refid": "169.254.0.1",
+            "stratumLevel": 3
+        },
+        "ntp1.wirehive.net": {
+            "delay": 78.299,
+            "jitter": 3.906,
+            "lastReceived": 1582193603.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": 347191.479,
+            "peerIpAddr": "134.0.16.1",
+            "pollInterval": 64,
+            "refid": "92.21.53.217",
+            "stratumLevel": 2
+        },
+        "time.cloudflare.com": {
+            "delay": 39.261,
+            "jitter": 3.906,
+            "lastReceived": 1582193604.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": 347277.534,
+            "peerIpAddr": "162.159.200.123",
+            "pollInterval": 64,
+            "refid": "10.21.8.251",
+            "stratumLevel": 3
+        }
+    }
+}

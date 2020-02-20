@@ -1,0 +1,128 @@
+{
+    "peers": {
+        "ns1.sys.cloudsys.tmcs": {
+            "delay": [
+                31.733,
+                76.655
+            ],
+            "jitter": [
+                3.906,
+                30675.231
+            ],
+            "lastReceived": [
+                1582193601.0,
+                1582193543.0
+            ],
+            "reachabilityHistory": {
+                "insert": [
+                    [
+                        0,
+                        true
+                    ],
+                    [
+                        1,
+                        true
+                    ],
+                    [
+                        2,
+                        true
+                    ],
+                    [
+                        3,
+                        true
+                    ],
+                    [
+                        4,
+                        true
+                    ],
+                    [
+                        5,
+                        true
+                    ]
+                ]
+            },
+            "offset": [
+                346940.839,
+                339941.515
+            ]
+        },
+        "ns2.sys.cloudsys.tmcs": {
+            "delay": [
+                54.845,
+                28.735
+            ],
+            "jitter": [
+                3.906,
+                30471.728
+            ],
+            "lastReceived": [
+                1582193602.0,
+                1582193541.0
+            ],
+            "reachabilityHistory": {
+                "insert": [
+                    [
+                        0,
+                        true
+                    ],
+                    [
+                        1,
+                        true
+                    ],
+                    [
+                        2,
+                        true
+                    ],
+                    [
+                        3,
+                        true
+                    ],
+                    [
+                        4,
+                        true
+                    ],
+                    [
+                        5,
+                        true
+                    ]
+                ]
+            },
+            "offset": [
+                347060.892,
+                339682.219
+            ]
+        },
+        "delete": {
+            "ntp1.wirehive.net": {
+                "delay": 78.299,
+                "jitter": 3.906,
+                "lastReceived": 1582193603.0,
+                "peerType": "unicast",
+                "reachabilityHistory": [
+                    true
+                ],
+                "condition": "reject",
+                "offset": 347191.479,
+                "peerIpAddr": "134.0.16.1",
+                "pollInterval": 64,
+                "refid": "92.21.53.217",
+                "stratumLevel": 2
+            },
+            "time.cloudflare.com": {
+                "delay": 39.261,
+                "jitter": 3.906,
+                "lastReceived": 1582193604.0,
+                "peerType": "unicast",
+                "reachabilityHistory": [
+                    true
+                ],
+                "condition": "reject",
+                "offset": 347277.534,
+                "peerIpAddr": "162.159.200.123",
+                "pollInterval": 64,
+                "refid": "10.21.8.251",
+                "stratumLevel": 3
+            }
+        }
+    }
+}
