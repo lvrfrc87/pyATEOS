@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-class PrefixLists():
+class prefix_list():
 
     def __init__(self, node):
         self.node = node

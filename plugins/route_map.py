@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-class RouteMaps():
+class route_map():
 
     def __init__(self, node):
         self.node = node

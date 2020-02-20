@@ -5,7 +5,7 @@ class snmp():
         self.node = node
 
     @property
-    def host(self):
+    def show(self):
 
         cmd = self.node.enable('show snmp host')
         result = cmd[0]['result']

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-class AsPath():
+class as_path():
 
     def __init__(self, node):
         self.node = node

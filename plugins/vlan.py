@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-class Vlans():
+class vlan():
 
     def __init__(self, node):
         self.node = node

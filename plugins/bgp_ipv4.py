@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-class BgpIpv4():
+class bgp_ipv4():
 
     def __init__(self, node):
         self.node = node

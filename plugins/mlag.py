@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-class Mlag():
+class mlag():
 
     def __init__(self, node):
         self.node = node

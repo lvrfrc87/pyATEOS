@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-class BgpEvpn():
+class bgp_evpn():
 
     def __init__(self, node):
         self.node = node
