@@ -9,21 +9,21 @@ from jsondiff import diff
 from pprint import pprint
 from pyeapi import load_config
 from pyeapi import connect_to
-from plugins import acl
-from plugins import as_path
-from plugins import bgp_evpn
-from plugins import bgp_ipv4
-from plugins import interface
-from plugins import ip_route
-from plugins import mlag
+from plugins.acl import acl
+from plugins.as_path import as_path
+from plugins.bgp_evpn import bgp_evpn
+from plugins.bgp_ipv4 import bgp_ipv4
+from plugins.interface import interface
+from plugins.ip_route import ip_route
+from plugins.mlag import mlag
 from plugins.ntp import ntp
-from plugins import prefix_list
-from plugins import route_map
-from plugins import snmp
-from plugins import stp
-from plugins import vlan
-from plugins import vrf
-from plugins import vxlan
+from plugins.prefix_list import prefix_list
+from plugins.route_map import route_map
+from plugins.snmp import snmp
+from plugins.stp import stp
+from plugins.vlan import vlan
+from plugins.vrf import vrf
+from plugins.vxlan import vxlan
 
 def arguments():
     # Add mutually exclusive
@@ -185,9 +185,11 @@ def main():
     my_flags = flags(arguments())
 
     inventory = my_flags.get('inventory')
+    # TO DO - multithread for nodes
     node = my_flags.get('node')[0]    
     mgmt = my_flags.get('mgmt')
     all = my_flags.get('all')
+    # TO DO - Define list
     test = my_flags.get('test')
     before = my_flags.get('before')
     after = my_flags.get('after')
@@ -196,8 +198,7 @@ def main():
     load_inventory = load_config(inventory)
     connect_node = connect_to(node)
 
-
-    test_list = [
+    test_all = [
         'acl',
         'as_path',
         'bgp_evpn',
@@ -215,8 +216,27 @@ def main():
         'vxlan'
     ]
 
+    test_mgmt = [
+        'snmp',
+        'ntp'
+    ]
+
+    test_routing = [
+        'bgp_evpn',
+        'bgp_ipv4',
+        'ip_route',
+        'vxlan',
+    ]
+
+    test_acces_ctrl = [
+        'acl',
+        'as_path',
+        'prefix_list',
+        'route_map'
+    ]
+
     if test:
-        if test in test_list:
+        if test in test_all:
             if before:
                 wr_before = WriteFile(test, node)
                 wr_before.write_before(eval(test)(connect_node).show)
@@ -226,6 +246,8 @@ def main():
             elif compare:
                 wr_diff = WriteFile(test, node)
                 wr_diff.write_diff()
+
+    
     
 
 if __name__ == '__main__':
