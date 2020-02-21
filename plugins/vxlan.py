@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from pyeapi import eapilib
+
 class vxlan():
 
     def __init__(self, node):
@@ -7,7 +9,14 @@ class vxlan():
     @property
     def show(self):
 
-        cmd = self.node.enable('show interface vxlan 1')
-        result = cmd[0]['result']
+        try:
+            cmd = self.node.enable('show interfaces vxlan 1')
+            result = cmd[0]['result']
 
-        return result
+            return result
+        
+        except eapilib.CommandError:
+            print('VXLAN command "show interfaces vxlan 1" not support by the platform')
+            pass
+       
+
