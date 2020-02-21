@@ -1,0 +1,72 @@
+{
+    "vrfs": {
+        "default": {
+            "routes": {
+                "1.1.1.1/32": {
+                    "kernelProgrammed": true,
+                    "directlyConnected": true,
+                    "routeAction": "forward",
+                    "vias": [
+                        {
+                            "interface": "Loopback0"
+                        }
+                    ],
+                    "hardwareProgrammed": true,
+                    "routeType": "connected"
+                },
+                "0.0.0.0/8": {
+                    "kernelProgrammed": true,
+                    "directlyConnected": true,
+                    "routeAction": "forward",
+                    "vias": [],
+                    "hardwareProgrammed": true,
+                    "routeType": "martian"
+                },
+                "127.0.0.0/8": {
+                    "kernelProgrammed": true,
+                    "directlyConnected": true,
+                    "routeAction": "forward",
+                    "vias": [],
+                    "hardwareProgrammed": true,
+                    "routeType": "martian"
+                },
+                "127.0.0.1/32": {
+                    "kernelProgrammed": true,
+                    "directlyConnected": true,
+                    "routeAction": "forward",
+                    "vias": [],
+                    "hardwareProgrammed": true,
+                    "routeType": "martian"
+                },
+                "0.0.0.0/0": {
+                    "kernelProgrammed": true,
+                    "directlyConnected": true,
+                    "routeAction": "forward",
+                    "vias": [
+                        {
+                            "interface": "Management1"
+                        }
+                    ],
+                    "hardwareProgrammed": true,
+                    "routeType": "static"
+                },
+                "10.0.2.0/24": {
+                    "kernelProgrammed": true,
+                    "directlyConnected": true,
+                    "routeAction": "forward",
+                    "vias": [
+                        {
+                            "interface": "Management1"
+                        }
+                    ],
+                    "hardwareProgrammed": true,
+                    "routeType": "connected"
+                }
+            },
+            "allRoutesProgrammedKernel": true,
+            "routingDisabled": false,
+            "allRoutesProgrammedHardware": true,
+            "defaultRouteState": "reachable"
+        }
+    }
+}

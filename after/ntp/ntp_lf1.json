@@ -1,5 +1,50 @@
 {
     "peers": {
+        "ns1.sys.cloudsys.tmcs": {
+            "delay": 0.0,
+            "jitter": 0.0,
+            "lastReceived": 2085978496.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": 0.0,
+            "peerIpAddr": "10.75.32.5",
+            "pollInterval": 1024,
+            "refid": ".INIT.",
+            "stratumLevel": 16
+        },
+        "srv20.arnoldthebat.co.uk": {
+            "delay": 0.0,
+            "jitter": 0.0,
+            "lastReceived": 2085978496.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": 0.0,
+            "peerIpAddr": "195.154.223.198",
+            "pollInterval": 1024,
+            "refid": ".INIT.",
+            "stratumLevel": 16
+        },
+        "185.121.25.166": {
+            "delay": 0.0,
+            "jitter": 0.0,
+            "lastReceived": 2085978496.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": 0.0,
+            "peerIpAddr": "185.121.25.166",
+            "pollInterval": 1024,
+            "refid": ".INIT.",
+            "stratumLevel": 16
+        },
         "ns2.sys.cloudsys.tmcs": {
             "delay": 0.0,
             "jitter": 0.0,
@@ -15,7 +60,7 @@
             "refid": ".INIT.",
             "stratumLevel": 16
         },
-        "10.75.32.5": {
+        "electra.pinklemon.net": {
             "delay": 0.0,
             "jitter": 0.0,
             "lastReceived": 2085978496.0,
@@ -25,22 +70,7 @@
             ],
             "condition": "reject",
             "offset": 0.0,
-            "peerIpAddr": "10.75.32.5",
-            "pollInterval": 1024,
-            "refid": ".INIT.",
-            "stratumLevel": 16
-        },
-        "y.ns.gin.ntt.net": {
-            "delay": 0.0,
-            "jitter": 0.0,
-            "lastReceived": 2085978496.0,
-            "peerType": "unicast",
-            "reachabilityHistory": [
-                true
-            ],
-            "condition": "reject",
-            "offset": 0.0,
-            "peerIpAddr": "129.250.35.251",
+            "peerIpAddr": "109.74.206.120",
             "pollInterval": 1024,
             "refid": ".INIT.",
             "stratumLevel": 16

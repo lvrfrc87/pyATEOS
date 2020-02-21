@@ -1,0 +1,148 @@
+{
+    "interfaces": {
+        "Management1": {
+            "lastStatusChangeTimestamp": [
+                1582248381.6404052,
+                1582248381.6404061
+            ],
+            "interfaceStatistics": {
+                "inBitsRate": [
+                    463.668762290913,
+                    1009.7967556389046
+                ],
+                "inPktsRate": [
+                    0.5921943875335006,
+                    1.2352166637114859
+                ],
+                "outBitsRate": [
+                    790.8558499002979,
+                    2401.026886136796
+                ],
+                "outPktsRate": [
+                    0.6302114424990111,
+                    1.1240330493382058
+                ]
+            },
+            "interfaceCounters": {
+                "outBroadcastPkts": [
+                    1101,
+                    1116
+                ],
+                "outUcastPkts": [
+                    3855,
+                    4049
+                ],
+                "counterRefreshTime": [
+                    1582252973.803083,
+                    1582253037.255625
+                ],
+                "inOctets": [
+                    231247,
+                    258836
+                ],
+                "outOctets": [
+                    595702,
+                    676003
+                ],
+                "inUcastPkts": [
+                    1925,
+                    2191
+                ],
+                "inTotalPkts": [
+                    1927,
+                    2193
+                ],
+                "outMulticastPkts": [
+                    1224,
+                    1227
+                ]
+            }
+        },
+        "Loopback0": {
+            "lastStatusChangeTimestamp": [
+                1582216358.350665,
+                1582216358.3506973
+            ]
+        },
+        "Ethernet2": {
+            "lastStatusChangeTimestamp": [
+                1582216377.7477515,
+                1582216377.747751
+            ],
+            "interfaceCounters": {
+                "counterRefreshTime": [
+                    1582252973.806982,
+                    1582253037.279013
+                ],
+                "outOctets": [
+                    2448676,
+                    2452871
+                ],
+                "outMulticastPkts": [
+                    19211,
+                    19244
+                ]
+            }
+        },
+        "Ethernet3": {
+            "lastStatusChangeTimestamp": [
+                1582216378.3140972,
+                1582216378.3140953
+            ],
+            "interfaceCounters": {
+                "counterRefreshTime": [
+                    1582252973.81521,
+                    1582253037.286848
+                ],
+                "outOctets": [
+                    2448676,
+                    2452871
+                ],
+                "outMulticastPkts": [
+                    19211,
+                    19244
+                ]
+            }
+        },
+        "Ethernet1": {
+            "lastStatusChangeTimestamp": [
+                1582216377.19678,
+                1582216377.1967812
+            ],
+            "interfaceCounters": {
+                "counterRefreshTime": [
+                    1582252973.812321,
+                    1582253037.284697
+                ],
+                "outOctets": [
+                    2448676,
+                    2452871
+                ],
+                "outMulticastPkts": [
+                    19211,
+                    19244
+                ]
+            }
+        },
+        "Ethernet4": {
+            "lastStatusChangeTimestamp": [
+                1582216378.7964976,
+                1582216378.796498
+            ],
+            "interfaceCounters": {
+                "counterRefreshTime": [
+                    1582252973.808973,
+                    1582253037.281347
+                ],
+                "outOctets": [
+                    2448676,
+                    2452871
+                ],
+                "outMulticastPkts": [
+                    19211,
+                    19244
+                ]
+            }
+        }
+    }
+}

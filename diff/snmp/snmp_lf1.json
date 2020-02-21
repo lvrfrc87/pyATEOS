@@ -1,0 +1,19 @@
+{
+    "hosts": {
+        "insert": [
+            [
+                0,
+                {
+                    "v1v2cParams": {
+                        "communityString": "fluffytail"
+                    },
+                    "vrf": "mgmt",
+                    "protocolVersion": "v2c",
+                    "hostname": "10.226.234.116",
+                    "notificationType": "trap",
+                    "port": 162
+                }
+            ]
+        ]
+    }
+}

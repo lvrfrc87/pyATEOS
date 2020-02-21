@@ -1,0 +1,16 @@
+{
+    "localInterface": "",
+    "state": "disabled",
+    "reloadDelay": 300,
+    "peerLink": "",
+    "dualPrimaryDetectionState": "disabled",
+    "reloadDelayNonMlag": 300,
+    "mlagPorts": {
+        "Disabled": 0,
+        "Active-partial": 0,
+        "Inactive": 0,
+        "Configured": 0,
+        "Active-full": 0
+    },
+    "portsErrdisabled": false
+}
