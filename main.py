@@ -139,8 +139,13 @@ class WriteFile():
 
             substrings = sorted(substitutions, key=len, reverse=True)
             regex = re.compile('|'.join(map(re.escape, substrings)))
+            
+            sub_applied = regex.sub(lambda match: substitutions[match.group(0)], string)
+            
+            for x in re.findall('\d+:',sub_applied):
+                sub_applied = sub_applied.replace(x, f'"{x[:-1]}":')
 
-            return regex.sub(lambda match: substitutions[match.group(0)], string)
+            return sub_applied
 
         substitutions = {
             '\'':'\"', 
@@ -166,10 +171,10 @@ class WriteFile():
         
         json_diff = str(diff(before, after, load=True, syntax='symmetric'))
         edit_json_diff = replace(json_diff, substitutions)
-        final_diff = json.loads(edit_json_diff)
 
         with open('{}/{}_{}.json'.format(self.pwd_diff, self.test, self.node), 'w', encoding='utf-8') as file:
-            json.dump(final_diff, file, ensure_ascii=False, indent=4)
+            json.dump(json.loads(edit_json_diff), file, ensure_ascii=False, indent=4)
+
 
 # def thread_node(nodes):
 #     node_threads = list()
