@@ -26,10 +26,37 @@ from plugins.vrf import vrf
 from plugins.vxlan import vxlan
 
 def arguments():
-    # TO DO - add mutually exclusive
     parser = argparse.ArgumentParser(
+        prog='pyATEOS',
         description='''pyATEOS - A simple python application for operational status test on 
         Arista device. Based on pyATS idea and pyeapi library for API calls.'''
+        )
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument(
+        '-B',
+        '--before',
+        dest='before',
+        action='store_true',
+        help='''write json file containing the test result BEFORE. 
+        To be run BEFORE the config change. 
+        File path example: $PWD/before/ntp/router1_ntp.json'''
+        )
+    group.add_argument(
+        '-A',
+        '--after',
+        dest='after',
+        action='store_true',
+        help='''write json file containing the test result BEFORE. 
+        To be run AFTER the config change. 
+        File path example: $PWD/after/ip_route/router1_ip_route.json'''
+        )
+    group.add_argument(
+        '-C',
+        '--compare',
+        dest='compare',
+        action='store_true',
+        help='''diff between before and after test files.
+        File path example: $PWD/diff/snmp/router1_snmp.json'''
         )
     parser.add_argument(
         '-i',
@@ -44,32 +71,6 @@ def arguments():
         help='specify inventory node. Multiple values are accepted separated by space',
         nargs='+',
         required=True
-        )
-    parser.add_argument(
-        '-B',
-        '--before',
-        dest='before',
-        action='store_true',
-        help='''write json file containing the test result BEFORE. 
-        To be run BEFORE the config change. 
-        File path example: $PWD/before/ntp/router1_ntp.json'''
-        )
-    parser.add_argument(
-        '-A',
-        '--after',
-        dest='after',
-        action='store_true',
-        help='''write json file containing the test result BEFORE. 
-        To be run AFTER the config change. 
-        File path example: $PWD/after/ip_route/router1_ip_route.json'''
-        )
-    parser.add_argument(
-        '-C',
-        '--compare',
-        dest='compare',
-        action='store_true',
-        help='''diff between before and after test files.
-        File path example: $PWD/diff/snmp/router1_snmp.json'''
         )
     parser.add_argument(
         '-t',
@@ -97,7 +98,7 @@ def arguments():
         '--all',
         dest='all',
         action='store_true',
-        help='run all testst under plugin/'
+        help='run all teststunder plugin/'
         )
 
     return parser.parse_args()
