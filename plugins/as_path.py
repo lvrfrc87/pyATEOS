@@ -7,7 +7,7 @@ class as_path():
     @property
     def show(self):
 
-        cmd = self.node.enable('show ip as-path')
+        cmd = self.node.enable('show ip as-path access-list')
         result = cmd[0]['result']
 
         return result
