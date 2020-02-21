@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from pyeapi import eapilib
+
 class bgp_evpn():
 
     def __init__(self, node):
@@ -7,7 +9,12 @@ class bgp_evpn():
     @property
     def show(self):
 
-        cmd = self.node.enable('show bgp evpn')
-        result = cmd[0]['result']
+        try:
+            cmd = self.node.enable('show bgp evpn')
+            result = cmd[0]['result']
 
-        return result
+            return result
+
+        except eapilib.CommandError:
+            print('BGP EVPN command "show bgp evpn" not support by the platform')
+            pass
