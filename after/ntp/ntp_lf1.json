@@ -1,20 +1,5 @@
 {
     "peers": {
-        "ns1.sys.cloudsys.tmcs": {
-            "delay": 0.0,
-            "jitter": 0.0,
-            "lastReceived": 2085978496.0,
-            "peerType": "unicast",
-            "reachabilityHistory": [
-                true
-            ],
-            "condition": "reject",
-            "offset": 0.0,
-            "peerIpAddr": "10.75.32.5",
-            "pollInterval": 1024,
-            "refid": ".INIT.",
-            "stratumLevel": 16
-        },
         "ns2.sys.cloudsys.tmcs": {
             "delay": 0.0,
             "jitter": 0.0,
@@ -30,7 +15,7 @@
             "refid": ".INIT.",
             "stratumLevel": 16
         },
-        "lyla.preshweb.co.uk": {
+        "10.75.32.5": {
             "delay": 0.0,
             "jitter": 0.0,
             "lastReceived": 2085978496.0,
@@ -40,12 +25,12 @@
             ],
             "condition": "reject",
             "offset": 0.0,
-            "peerIpAddr": "83.170.75.28",
+            "peerIpAddr": "10.75.32.5",
             "pollInterval": 1024,
             "refid": ".INIT.",
             "stratumLevel": 16
         },
-        "x.ns.gin.ntt.net": {
+        "y.ns.gin.ntt.net": {
             "delay": 0.0,
             "jitter": 0.0,
             "lastReceived": 2085978496.0,
@@ -55,7 +40,7 @@
             ],
             "condition": "reject",
             "offset": 0.0,
-            "peerIpAddr": "129.250.35.250",
+            "peerIpAddr": "129.250.35.251",
             "pollInterval": 1024,
             "refid": ".INIT.",
             "stratumLevel": 16

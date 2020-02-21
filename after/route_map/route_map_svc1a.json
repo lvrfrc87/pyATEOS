@@ -1,0 +1,87 @@
+{
+    "routeMaps": {
+        "t10-loopback": {
+            "entries": {
+                "10": {
+                    "setRules": {
+                        "nextHop": {
+                            "ipAddress": "10.76.96.165",
+                            "nextHopType": "ipAddress"
+                        }
+                    },
+                    "subRouteMap": "",
+                    "filterType": "permit",
+                    "matchRules": {
+                        "interface": "Loopback10"
+                    },
+                    "description": []
+                },
+                "1000": {
+                    "setRules": {},
+                    "subRouteMap": "",
+                    "filterType": "permit",
+                    "matchRules": {},
+                    "description": []
+                }
+            }
+        },
+        "t10-to-mgmt": {
+            "entries": {
+                "10": {
+                    "setRules": {},
+                    "subRouteMap": "",
+                    "filterType": "permit",
+                    "matchRules": {
+                        "prefixList": "t10"
+                    },
+                    "description": []
+                },
+                "1000": {
+                    "setRules": {},
+                    "subRouteMap": "",
+                    "filterType": "permit",
+                    "matchRules": {},
+                    "description": []
+                }
+            }
+        },
+        "lo10": {
+            "entries": {
+                "10": {
+                    "setRules": {
+                        "nextHop": {
+                            "ipAddress": "10.76.96.200",
+                            "nextHopType": "ipAddress"
+                        }
+                    },
+                    "subRouteMap": "",
+                    "filterType": "permit",
+                    "matchRules": {
+                        "interface": "Loopback10"
+                    },
+                    "description": []
+                },
+                "1000": {
+                    "setRules": {},
+                    "subRouteMap": "",
+                    "filterType": "permit",
+                    "matchRules": {},
+                    "description": []
+                }
+            }
+        },
+        "TO-SPINE-LAYER": {
+            "entries": {
+                "10": {
+                    "setRules": {},
+                    "subRouteMap": "",
+                    "filterType": "permit",
+                    "matchRules": {
+                        "asPathList": "1"
+                    },
+                    "description": []
+                }
+            }
+        }
+    }
+}
