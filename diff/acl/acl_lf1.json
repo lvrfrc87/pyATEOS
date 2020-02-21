@@ -1,0 +1,32 @@
+{
+    "aclList": {
+        "0": {
+            "sequence": {
+                "1": {
+                    "counterData": {
+                        "lastChangedTime": [
+                            37228.921938325,
+                            37278.926539569
+                        ],
+                        "packetCount": [
+                            2251,
+                            2322
+                        ]
+                    }
+                },
+                "7": {
+                    "counterData": {
+                        "lastChangedTime": [
+                            37228.921938325,
+                            37268.925264644
+                        ],
+                        "packetCount": [
+                            148,
+                            149
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

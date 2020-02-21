@@ -1,18 +1,53 @@
 {
     "peers": {
-        "ns2.sys.cloudsys.tmcs": {
-            "refid": [
-                ".XFAC.",
-                ".INIT."
-            ]
-        },
-        "ns1.sys.cloudsys.tmcs": {
-            "refid": [
-                ".XFAC.",
-                ".INIT."
-            ]
-        },
         "insert": {
+            "srv20.arnoldthebat.co.uk": {
+                "delay": 0.0,
+                "jitter": 0.0,
+                "lastReceived": 2085978496.0,
+                "peerType": "unicast",
+                "reachabilityHistory": [
+                    true
+                ],
+                "condition": "reject",
+                "offset": 0.0,
+                "peerIpAddr": "195.154.223.198",
+                "pollInterval": 1024,
+                "refid": ".INIT.",
+                "stratumLevel": 16
+            },
+            "185.121.25.166": {
+                "delay": 0.0,
+                "jitter": 0.0,
+                "lastReceived": 2085978496.0,
+                "peerType": "unicast",
+                "reachabilityHistory": [
+                    true
+                ],
+                "condition": "reject",
+                "offset": 0.0,
+                "peerIpAddr": "185.121.25.166",
+                "pollInterval": 1024,
+                "refid": ".INIT.",
+                "stratumLevel": 16
+            },
+            "electra.pinklemon.net": {
+                "delay": 0.0,
+                "jitter": 0.0,
+                "lastReceived": 2085978496.0,
+                "peerType": "unicast",
+                "reachabilityHistory": [
+                    true
+                ],
+                "condition": "reject",
+                "offset": 0.0,
+                "peerIpAddr": "109.74.206.120",
+                "pollInterval": 1024,
+                "refid": ".INIT.",
+                "stratumLevel": 16
+            }
+        },
+        "delete": {
             "guestmanagement.co.uk": {
                 "delay": 0.0,
                 "jitter": 0.0,
@@ -41,23 +76,6 @@
                 "peerIpAddr": "85.199.214.98",
                 "pollInterval": 1024,
                 "refid": ".INIT.",
-                "stratumLevel": 16
-            }
-        },
-        "delete": {
-            "y.ns.gin.ntt.net": {
-                "delay": 0.0,
-                "jitter": 0.0,
-                "lastReceived": 2085978496.0,
-                "peerType": "unicast",
-                "reachabilityHistory": [
-                    true
-                ],
-                "condition": "reject",
-                "offset": 0.0,
-                "peerIpAddr": "129.250.35.251",
-                "pollInterval": 1024,
-                "refid": ".XFAC.",
                 "stratumLevel": 16
             }
         }
