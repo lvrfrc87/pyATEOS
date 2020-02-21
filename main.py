@@ -5,8 +5,8 @@ import sys
 import time
 import json
 import argparse
+import threading
 from jsondiff import diff
-from pprint import pprint
 from pyeapi import load_config
 from pyeapi import connect_to
 from plugins.acl import acl
@@ -46,7 +46,7 @@ def arguments():
         '--after',
         dest='after',
         action='store_true',
-        help='''write json file containing the test result BEFORE. 
+        help='''write json file containing the test result AFTER. 
         To be run AFTER the config change. 
         File path example: $PWD/after/ip_route/router1_ip_route.json'''
         )
@@ -77,28 +77,8 @@ def arguments():
         '--test',
         dest='test',
         help='run one or more specific test. Multiple values are accepted separated by space',
-        nargs='+'
-        )
-    parser.add_argument(
-        '-m',
-        '--mgmt',
-        dest='mgmt',
-        action='store_true',
-        help='run only management subset tests'
-        )
-    parser.add_argument(
-        '-r',
-        '--routing',
-        dest='routing',
-        action='store_true',
-        help='run only routing subset tests'
-        )
-    parser.add_argument(
-        '-a',
-        '--all',
-        dest='all',
-        action='store_true',
-        help='run all teststunder plugin/'
+        nargs='+',           
+        required=True
         )
 
     return parser.parse_args()
@@ -116,9 +96,6 @@ def flags(args):
     returned_dict.update(
         inventory=inventory,
         node=args.node,
-        mgmt=args.mgmt,
-        routing=args.routing,
-        all=args.all,
         test=args.test,
         before=args.before,
         after=args.after,
@@ -130,32 +107,33 @@ def flags(args):
 
 class WriteFile():
     def __init__(self, test, node):
+
         self.test = test
         self.node = node
         self.pwd_before = os.getcwd() + '/before/{}'.format(self.test)
         self.pwd_after = os.getcwd() + '/after/{}'.format(self.test)
         self.pwd_diff = os.getcwd() + '/diff/{}'.format(self.test)
 
+    def write_before(self, result):
         if not os.path.exists(self.pwd_before) :
             os.makedirs(self.pwd_before)
 
-        if not os.path.exists(self.pwd_after):
-            os.makedirs(self.pwd_after)
-
-        if not os.path.exists(self.pwd_diff) :
-            os.makedirs(self.pwd_diff)  
-
-    def write_before(self, result):
         with open('{}/{}_{}.json'.format(self.pwd_before, self.test, self.node), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
 
 
     def write_after(self, result):
+        if not os.path.exists(self.pwd_after):
+            os.makedirs(self.pwd_after)
+
         with open('{}/{}_{}.json'.format(self.pwd_after, self.test, self.node), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
 
 
     def write_diff(self):
+
+        if not os.path.exists(self.pwd_diff) :
+            os.makedirs(self.pwd_diff)  
         
         def replace(string, substitutions):
 
@@ -171,7 +149,7 @@ class WriteFile():
             'True':'true', 
             'False':'false',
             '(':'[',
-            ')':']'
+            ')':']',
             }
 
         try:
@@ -193,25 +171,16 @@ class WriteFile():
         with open('{}/{}_{}.json'.format(self.pwd_diff, self.test, self.node), 'w', encoding='utf-8') as file:
             json.dump(final_diff, file, ensure_ascii=False, indent=4)
 
+# def thread_node(nodes):
+#     node_threads = list()
+#     for node in nodes:
+#         thread_targets = threading.Thread(target=influxdb_call, args=(node))
+#         thread_targets.start()
+#         node_threads.append(thread_targets)
 
-def main():
+def bef_aft_com(node, test, before=None, after=None, compare=None):
 
-    my_flags = flags(arguments())
-
-    inventory = my_flags.get('inventory')
-    # TO DO - multithread for nodes
-    node = my_flags.get('node')[0]    
-    mgmt = my_flags.get('mgmt')
-    routing = my_flags.get('routing') 
-    all = my_flags.get('all')
-    test = my_flags.get('test')
-    before = my_flags.get('before')
-    after = my_flags.get('after')
-    compare = my_flags.get('compare')
-
-    load_inventory = load_config(inventory)
-    connect_node = connect_to(node)
-
+    test_run = list()
     test_all = [
         'acl',
         'as_path',
@@ -230,68 +199,53 @@ def main():
         'vxlan'
     ]
 
-    test_mgmt = [
-        'snmp',
-        'ntp'
-    ]
+    if 'mgmt' in test:
+        test.remove('mgmt')
+        test_run.extend(('ntp','snmp'))
+    elif 'routing' in test:
+        test.remove('routing')
+        test_run.extend(('bgp_evpn','bgp_ipv4','ip_route'))
+    elif 'layer2' in test:
+        test.remove('layer2')
+        test_run.extend(('stp','vlan','vxlan'))
+    elif 'ctrl' in test:
+        test.remove('ctrl')
+        test_run.extend(('acl','as_path','prefix_list','route_map'))
+    elif 'all' in test:
+        test.remove('all')
+        test_run = test_all
 
-    test_routing = [
-        'bgp_evpn',
-        'bgp_ipv4',
-        'ip_route',
-        'vxlan',
-    ]
+    test_run.extend(test)
 
-    # TO DO - dry
+    for test in list(set(test_run)):
+        if before:
+            wr_before = WriteFile(test, node)
+            wr_before.write_before(eval(test)(connect_to(node)).show)
+        elif after:
+            wr_after = WriteFile(test, node)
+            wr_after.write_after(eval(test)(connect_to(node)).show)
+        elif compare:
+            wr_diff = WriteFile(test, node)
+            wr_diff.write_diff()
+    
+
+def main():
+
+    my_flags = flags(arguments())
+
+    inventory = my_flags.get('inventory')
+    node = my_flags.get('node')    
+    test = my_flags.get('test')
+    before = my_flags.get('before')
+    after = my_flags.get('after')
+    compare = my_flags.get('compare')
+
+    load_inventory = load_config(inventory)
+    
     if test:
-        for test in test:
-            if test in test_all:
-                if before:
-                    wr_before = WriteFile(test, node)
-                    wr_before.write_before(eval(test)(connect_node).show)
-                elif after:
-                    wr_after = WriteFile(test, node)
-                    wr_after.write_after(eval(test)(connect_node).show)
-                elif compare:
-                    wr_diff = WriteFile(test, node)
-                    wr_diff.write_diff()
-    
-    if mgmt:
-        for test in test_mgmt:
-            if before:
-                wr_before = WriteFile(test, node)
-                wr_before.write_before(eval(test)(connect_node).show)
-            elif after:
-                wr_after = WriteFile(test, node)
-                wr_after.write_after(eval(test)(connect_node).show)
-            elif compare:
-                wr_diff = WriteFile(test, node)
-                wr_diff.write_diff()
+        for node in node:
+            bef_aft_com(node, test, before, after, compare)
 
-    if routing:      
-        for test in test_routing:
-            if before:
-                wr_before = WriteFile(test, node)
-                wr_before.write_before(eval(test)(connect_node).show)
-            elif after:
-                wr_after = WriteFile(test, node)
-                wr_after.write_after(eval(test)(connect_node).show)
-            elif compare:
-                wr_diff = WriteFile(test, node)
-                wr_diff.write_diff()
-
-    if all:
-        for test in test_all:
-            if before:
-                wr_before = WriteFile(test, node)
-                wr_before.write_before(eval(test)(connect_node).show)
-            elif after:
-                wr_after = WriteFile(test, node)
-                wr_after.write_after(eval(test)(connect_node).show)
-            elif compare:
-                wr_diff = WriteFile(test, node)
-                wr_diff.write_diff()
-    
 
 if __name__ == '__main__':
     main()
