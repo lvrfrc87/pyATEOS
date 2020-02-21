@@ -7,7 +7,7 @@ class acl():
     @property
     def show(self):
 
-        cmd = self.node.enable('show ip acl')
+        cmd = self.node.enable('show ip access-lists')
         result = cmd[0]['result']
 
         return result
