@@ -7,7 +7,7 @@ class vlan():
     @property
     def show(self):
 
-        cmd = self.node.enable('show vrfs')
+        cmd = self.node.enable('show vlan')
         result = cmd[0]['result']
 
         return result
