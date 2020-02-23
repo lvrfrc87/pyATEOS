@@ -80,18 +80,36 @@ def arguments():
         nargs='+',           
         required=True
         )
+    parser.add_argument(
+        '-F',
+        '--file_name',
+        dest='file',
+        help='''provide the 2 filename IDs to compare, separated by space. 
+        BEFORE first, AFTER second. i.e [..] -C -f 1582386835 1582387929''',
+        nargs='+',
+        type=int,
+        required='--compare'
+        )
 
     return parser.parse_args()
 
 
 def flags(args):
-
     returned_dict = dict()
 
     if args.inventory:
         inventory = args.inventory
     else:
         inventory = 'eos_inventory.ini'
+
+    if args.compare:
+        if args.file:
+            assert len(args.file) == 2 and (args.file[0] - args.file[1]) < 0,'''
+            provide the 2 filename IDs to compare, separated by space. 
+            BEFORE first, AFTER second. i.e [..] -C -f 1582386835 1582387929'''
+            file_name = args.file
+    else:
+        file_name = None
 
     returned_dict.update(
         inventory=inventory,
@@ -100,34 +118,49 @@ def flags(args):
         before=args.before,
         after=args.after,
         compare=args.compare,
+        file_name=file_name
         )
 
     return returned_dict
 
 
 class WriteFile():
-    def __init__(self, test, node):
+    def __init__(self, test, node, file_name=None):
 
         self.test = test
         self.node = node
+        self.file_name = file_name
         self.pwd_before = os.getcwd() + '/before/{}'.format(self.test)
         self.pwd_after = os.getcwd() + '/after/{}'.format(self.test)
         self.pwd_diff = os.getcwd() + '/diff/{}'.format(self.test)
+        self.time_file = round(time.time())
 
     def write_before(self, result):
         if not os.path.exists(self.pwd_before) :
             os.makedirs(self.pwd_before)
 
-        with open('{}/{}_{}.json'.format(self.pwd_before, self.test, self.node), 'w', encoding='utf-8') as file:
+        with open('{0}/{1}_{2}_{3}.json'.format(
+            self.pwd_before, 
+            self.time_file,
+            self.test, 
+            self.node
+            ), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
+            print('BEFORE file ID: {}'.format(self.time_file))
 
 
     def write_after(self, result):
         if not os.path.exists(self.pwd_after):
             os.makedirs(self.pwd_after)
 
-        with open('{}/{}_{}.json'.format(self.pwd_after, self.test, self.node), 'w', encoding='utf-8') as file:
+        with open('{0}/{1}_{2}_{3}.json'.format(
+            self.pwd_after,
+            self.time_file, 
+            self.test, 
+            self.node
+            ), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
+            print('AFTER file ID: {}'.format(self.time_file))
 
 
     def write_diff(self):
@@ -158,22 +191,38 @@ class WriteFile():
             }
 
         try:
-            before = open('{}/{}_{}.json'.format(self.pwd_before, self.test, self.node), 'r')
+            before = open('{0}/{1}_{2}_{3}.json'.format(
+                self.pwd_before,
+                self.file_name[0],  
+                self.test, 
+                self.node
+                ), 'r')
         except FileNotFoundError as error:
             print(error)
             sys.exit(1)
         
         try:
-            after = open('{}/{}_{}.json'.format(self.pwd_after, self.test, self.node), 'r')
+            after = open('{0}/{1}_{2}_{3}.json'.format(
+                self.pwd_after,
+                self.file_name[1],  
+                self.test,
+                self.node), 'r')
         except FileNotFoundError as error:
             print(error)        
             sys.exit(1)
         
         json_diff = str(diff(before, after, load=True, syntax='symmetric'))
         edit_json_diff = replace(json_diff, substitutions)
+        diff_file_id = str((self.file_name[0] - self.file_name[1]) * -1)
 
-        with open('{}/{}_{}.json'.format(self.pwd_diff, self.test, self.node), 'w', encoding='utf-8') as file:
+        with open('{0}/{1}_{2}_{3}.json'.format(
+            self.pwd_diff,
+            diff_file_id,
+            self.test,
+            self.node), 'w', encoding='utf-8') as file:
             json.dump(json.loads(edit_json_diff), file, ensure_ascii=False, indent=4)
+            print('DIFF file ID: {}'.format(diff_file_id))
+
 
 
 # def thread_node(nodes):
@@ -183,7 +232,7 @@ class WriteFile():
 #         thread_targets.start()
 #         node_threads.append(thread_targets)
 
-def bef_aft_com(node, test, before=None, after=None, compare=None):
+def bef_aft_com(node, test, before=None, after=None, compare=None, file_name=None):
 
     test_run = list()
     test_all = [
@@ -230,7 +279,7 @@ def bef_aft_com(node, test, before=None, after=None, compare=None):
             wr_after = WriteFile(test, node)
             wr_after.write_after(eval(test)(connect_to(node)).show)
         elif compare:
-            wr_diff = WriteFile(test, node)
+            wr_diff = WriteFile(test, node, file_name)
             wr_diff.write_diff()
     
 
@@ -244,12 +293,13 @@ def main():
     before = my_flags.get('before')
     after = my_flags.get('after')
     compare = my_flags.get('compare')
+    file_name = my_flags.get('file_name')
 
-    load_inventory = load_config(inventory)
+    load_config(inventory)
     
     if test:
         for node in node:
-            bef_aft_com(node, test, before, after, compare)
+            bef_aft_com(node, test, before, after, compare, file_name)
 
 
 if __name__ == '__main__':
