@@ -14,4 +14,13 @@ VEOS = "vEOS-lab-4.21.1.1F"
     lf1.vm.network "private_network", virtualbox__intnet: "link_9", ip: "169.254.9.31", auto_config: false
     lf1.vm.network "private_network", virtualbox__intnet: "link_10", ip: "169.254.10.31", auto_config: false
   end
+  config.vm.define "lf2.arista.ams" do |lf1|
+    lf1.vm.box = VEOS
+    lf1.vm.network :forwarded_port, guest: 22, host: 23202, id: 'ssh'
+    lf1.vm.network :forwarded_port, guest: 80, host: 2381, id: 'http'
+    lf1.vm.network "private_network", virtualbox__intnet: "link_1", ip: "169.254.1.32", auto_config: false
+    lf1.vm.network "private_network", virtualbox__intnet: "link_5", ip: "169.254.5.32", auto_config: false
+    lf1.vm.network "private_network", virtualbox__intnet: "link_2", ip: "169.254.2.32", auto_config: false
+    lf1.vm.network "private_network", virtualbox__intnet: "link_7", ip: "169.254.7.32", auto_config: false
+  end
 end
