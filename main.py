@@ -27,7 +27,7 @@ from plugins.vxlan import vxlan
 def arguments():
     parser = argparse.ArgumentParser(
         prog='pyATEOS',
-        description='''pyATEOS - A simple python application for operational status test on 
+        description='''pyATEOS - A simple python application for operational status test on
         Arista device. Based on pyATS idea and pyeapi library for API calls.'''
         )
     group = parser.add_mutually_exclusive_group(required=True)
@@ -36,7 +36,7 @@ def arguments():
         '--before',
         dest='before',
         action='store_true',
-        help='''write json file containing the test result BEFORE. 
+        help='''write json file containing the test result BEFORE.
         To be run BEFORE the config change. 
         File path example: $PWD/before/ntp/router1_ntp.json'''
         )
@@ -45,8 +45,8 @@ def arguments():
         '--after',
         dest='after',
         action='store_true',
-        help='''write json file containing the test result AFTER. 
-        To be run AFTER the config change. 
+        help='''write json file containing the test result AFTER.
+        To be run AFTER the config change.
         File path example: $PWD/after/ip_route/router1_ip_route.json'''
         )
     group.add_argument(
@@ -76,14 +76,14 @@ def arguments():
         '--test',
         dest='test',
         help='run one or more specific test. Multiple values are accepted separated by space',
-        nargs='+',           
+        nargs='+',
         required=True
         )
     parser.add_argument(
         '-F',
         '--file_name',
         dest='file',
-        help='''provide the 2 filename IDs to compare, separated by space. 
+        help='''provide the 2 filename IDs to compare, separated by space.
         BEFORE first, AFTER second. i.e [..] -C -f 1582386835 1582387929''',
         nargs='+',
         type=int,
@@ -105,7 +105,7 @@ def flags(args):
 
     if args.compare:
         if args.file:
-            assert len(args.file) == 2 and (args.file[0] - args.file[1]) < 0,'''
+            assert len(args.file) == 2 and (args.file[0] - args.file[1]) < 0, '''
             provide the 2 filename IDs to compare, separated by space. 
             BEFORE first, AFTER second. i.e [..] -C -f 1582386835 1582387929'''
             file_name = args.file
@@ -137,14 +137,14 @@ class WriteFile():
         self.time_file = round(time.time())
 
     def write_before(self, result):
-        if not os.path.exists(self.pwd_before) :
+        if not os.path.exists(self.pwd_before):
             os.makedirs(self.pwd_before)
 
         with open('{0}/{1}_{2}_{3}.json'.format(
-            self.pwd_before, 
-            self.time_file,
-            self.test, 
-            self.node
+                self.pwd_before,
+                self.time_file,
+                self.test,
+                self.node
             ), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
             print('BEFORE file ID: {}'.format(self.time_file))
@@ -155,10 +155,10 @@ class WriteFile():
             os.makedirs(self.pwd_after)
 
         with open('{0}/{1}_{2}_{3}.json'.format(
-            self.pwd_after,
-            self.time_file, 
-            self.test, 
-            self.node
+                self.pwd_after,
+                self.time_file,
+                self.test,
+                self.node
             ), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
             print('AFTER file ID: {}'.format(self.time_file))
@@ -166,26 +166,25 @@ class WriteFile():
 
     def write_diff(self):
 
-        if not os.path.exists(self.pwd_diff) :
-            os.makedirs(self.pwd_diff)  
-        
+        if not os.path.exists(self.pwd_diff):
+            os.makedirs(self.pwd_diff)
+
         def replace(string, substitutions):
 
             substrings = sorted(substitutions, key=len, reverse=True)
             regex = re.compile('|'.join(map(re.escape, substrings)))
-            
             sub_applied = regex.sub(lambda match: substitutions[match.group(0)], string)
-            
-            for x in re.findall('\d+:',sub_applied):
-                sub_applied = sub_applied.replace(x, f'"{x[:-1]}":')
+
+            for integer in re.findall(r'\d+:', sub_applied):
+                sub_applied = sub_applied.replace(integer, f'"{integer[:-1]}":')
 
             return sub_applied
 
         substitutions = {
-            '\'':'\"', 
-            'insert':'"insert"', 
-            'delete':'"delete"', 
-            'True':'true', 
+            '\'':'\"',
+            'insert':'"insert"',
+            'delete':'"delete"',
+            'True':'true',
             'False':'false',
             '(':'[',
             ')':']',
@@ -194,14 +193,13 @@ class WriteFile():
         try:
             before = open('{0}/{1}_{2}_{3}.json'.format(
                 self.pwd_before,
-                self.file_name[0],  
-                self.test, 
-                self.node
-                ), 'r')
+                self.file_name[0],
+                self.test,
+                self.node), 'r')
         except FileNotFoundError as error:
             print(error)
             sys.exit(1)
-        
+
         try:
             after = open('{0}/{1}_{2}_{3}.json'.format(
                 self.pwd_after,
@@ -209,18 +207,18 @@ class WriteFile():
                 self.test,
                 self.node), 'r')
         except FileNotFoundError as error:
-            print(error)        
+            print(error)
             sys.exit(1)
-        
+
         json_diff = str(diff(before, after, load=True, syntax='symmetric'))
         edit_json_diff = replace(json_diff, substitutions)
         diff_file_id = str((self.file_name[0] - self.file_name[1]) * -1)
 
         with open('{0}/{1}_{2}_{3}.json'.format(
-            self.pwd_diff,
-            diff_file_id,
-            self.test,
-            self.node), 'w', encoding='utf-8') as file:
+                self.pwd_diff,
+                diff_file_id,
+                self.test,
+                self.node), 'w', encoding='utf-8') as file:
             json.dump(json.loads(edit_json_diff), file, ensure_ascii=False, indent=4)
             print('DIFF file ID: {}'.format(diff_file_id))
 
@@ -248,16 +246,16 @@ def bef_aft_com(node, test, before=None, after=None, compare=None, file_name=Non
 
     if 'mgmt' in test:
         test.remove('mgmt')
-        test_run.extend(('ntp','snmp'))
+        test_run.extend(('ntp', 'snmp'))
     elif 'routing' in test:
         test.remove('routing')
-        test_run.extend(('bgp_evpn','bgp_ipv4','ip_route'))
+        test_run.extend(('bgp_evpn', 'bgp_ipv4', 'ip_route'))
     elif 'layer2' in test:
         test.remove('layer2')
-        test_run.extend(('stp','vlan','vxlan'))
+        test_run.extend(('stp', 'vlan', 'vxlan'))
     elif 'ctrl' in test:
         test.remove('ctrl')
-        test_run.extend(('acl','as_path','prefix_list','route_map'))
+        test_run.extend(('acl', 'as_path', 'prefix_list', 'route_map'))
     elif 'all' in test:
         test.remove('all')
         test_run = test_all
