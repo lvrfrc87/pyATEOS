@@ -4,4 +4,4 @@ lib
 .Python
 pip-selfcheck.json
 plugins/__pycache__
-vagrant/.vagrant
+test/vagrant/.vagrant
