@@ -5,7 +5,6 @@ import sys
 import time
 import json
 import argparse
-import threading
 from jsondiff import diff
 from pyeapi import load_config
 from pyeapi import connect_to
@@ -88,8 +87,10 @@ def arguments():
         BEFORE first, AFTER second. i.e [..] -C -f 1582386835 1582387929''',
         nargs='+',
         type=int,
-        required='--compare'
         )
+
+    if parser.parse_args().compare and parser.parse_args().file is None:
+        parser.error("-C/--compare requires -F/--file_name.")
 
     return parser.parse_args()
 
@@ -224,14 +225,6 @@ class WriteFile():
             print('DIFF file ID: {}'.format(diff_file_id))
 
 
-
-# def thread_node(nodes):
-#     node_threads = list()
-#     for node in nodes:
-#         thread_targets = threading.Thread(target=influxdb_call, args=(node))
-#         thread_targets.start()
-#         node_threads.append(thread_targets)
-
 def bef_aft_com(node, test, before=None, after=None, compare=None, file_name=None):
 
     test_run = list()
@@ -281,14 +274,14 @@ def bef_aft_com(node, test, before=None, after=None, compare=None, file_name=Non
         elif compare:
             wr_diff = WriteFile(test, node, file_name)
             wr_diff.write_diff()
-    
+
 
 def main():
 
     my_flags = flags(arguments())
 
     inventory = my_flags.get('inventory')
-    node = my_flags.get('node')    
+    nodes = my_flags.get('node')    
     test = my_flags.get('test')
     before = my_flags.get('before')
     after = my_flags.get('after')
@@ -298,7 +291,7 @@ def main():
     load_config(inventory)
     
     if test:
-        for node in node:
+        for node in nodes:
             bef_aft_com(node, test, before, after, compare, file_name)
 
 
