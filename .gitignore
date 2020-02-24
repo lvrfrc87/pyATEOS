@@ -5,3 +5,5 @@ lib
 pip-selfcheck.json
 plugins/__pycache__
 test/vagrant/.vagrant
+eos_inventory.ini
+setup.py

@@ -223,9 +223,19 @@ class WriteFile():
             print('DIFF file ID for {} test: {}'.format(self.test.upper(), diff_file_id))
 
 
-def bef_aft_com(node, test, before=None, after=None, compare=None, file_name=None):
+def bef_aft_com(**kwargs):
 
     test_run = list()
+
+    if kwargs:
+        before = kwargs.get('before')
+        after = kwargs.get('after')
+        compare = kwargs.get('compare')
+        file_name = kwargs.get('file_name')
+        nodes = kwargs.get('node')
+        test = kwargs.get('test')
+ 
+
     test_all = [
         'acl',
         'as_path',
@@ -243,6 +253,7 @@ def bef_aft_com(node, test, before=None, after=None, compare=None, file_name=Non
         'vrf',
         'vxlan'
     ]
+
 
     if 'mgmt' in test:
         test.remove('mgmt')
@@ -262,35 +273,27 @@ def bef_aft_com(node, test, before=None, after=None, compare=None, file_name=Non
 
     test_run.extend(test)
 
-    for test in list(set(test_run)):
-        if before:
-            wr_before = WriteFile(test, node)
-            wr_before.write_before(eval(test)(connect_to(node)).show)
-        elif after:
-            wr_after = WriteFile(test, node)
-            wr_after.write_after(eval(test)(connect_to(node)).show)
-        elif compare:
-            wr_diff = WriteFile(test, node, file_name)
-            wr_diff.write_diff()
+    for node in nodes:
+        for test in list(set(test_run)):
+            if before:
+                wr_before = WriteFile(test, node)
+                wr_before.write_before(eval(test)(connect_to(node)).show)
+            elif after:
+                wr_after = WriteFile(test, node)
+                wr_after.write_after(eval(test)(connect_to(node)).show)
+            elif compare:
+                wr_diff = WriteFile(test, node, file_name)
+                wr_diff.write_diff()
 
 
 def main():
 
     my_flags = flags(arguments())
 
-    inventory = my_flags.get('inventory')
-    nodes = my_flags.get('node')    
-    test = my_flags.get('test')
-    before = my_flags.get('before')
-    after = my_flags.get('after')
-    compare = my_flags.get('compare')
-    file_name = my_flags.get('file_name')
-
-    load_config(inventory)
+    load_config(my_flags.get('inventory'))
     
-    if test:
-        for node in nodes:
-            bef_aft_com(node, test, before, after, compare, file_name)
+    if my_flags.get('test'):
+        bef_aft_com(**my_flags)
 
 
 if __name__ == '__main__':
