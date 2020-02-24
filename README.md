@@ -187,4 +187,4 @@ vrf
 vxlan
 ```
 
-Some of the test are grouped together like `mgmt: ntp, snmp`, `routing: bgp_evpn, bgp_ipv4, ip_route`, `layer2: stp, vlan, vxlan`, `ctrl: acl, as_path, prefix_list, route_map` and `all` running all test availables under `plugins`
+Some of the test are grouped together like `mgmt: ntp, snmp`, `routing: bgp_evpn, bgp_ipv4, ip_route`, `layer2: stp, vlan, vxlan`, `ctrl: acl, as_path, prefix_list, route_map` and `all` running all test availables under `plugins`. New plugins can be easily created and added still, under `plugins/` folder.
