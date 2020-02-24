@@ -270,20 +270,23 @@ def bef_aft_com(**kwargs):
     elif 'all' in test:
         test.remove('all')
         test_run = test_all
-
+    
     test_run.extend(test)
 
     for node in nodes:
         for test in list(set(test_run)):
-            if before:
-                wr_before = WriteFile(test, node)
-                wr_before.write_before(eval(test)(connect_to(node)).show)
-            elif after:
-                wr_after = WriteFile(test, node)
-                wr_after.write_after(eval(test)(connect_to(node)).show)
-            elif compare:
-                wr_diff = WriteFile(test, node, file_name)
-                wr_diff.write_diff()
+            if test not in test_all:
+                raise ValueError('Test name not valid. Please check the test list available under plugins folder')
+            else:
+                if before:
+                    wr_before = WriteFile(test, node)
+                    wr_before.write_before(eval(test)(connect_to(node)).show)
+                elif after:
+                    wr_after = WriteFile(test, node)
+                    wr_after.write_after(eval(test)(connect_to(node)).show)
+                elif compare:
+                    wr_diff = WriteFile(test, node, file_name)
+                    wr_diff.write_diff()
 
 
 def main():
