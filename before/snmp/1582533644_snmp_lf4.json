@@ -1,0 +1,404 @@
+{
+    "hosts": [
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.226.234.116",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.226.234.117",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.226.236.4",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.227.234.116",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.227.236.4",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.128.200",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.128.215",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.5.196",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.247.5.202",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.63.65.249",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.63.65.254",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.66.65.19",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.66.65.24",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.70.65.18",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.70.65.21",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.74.120.238",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.74.26.126",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.74.26.127",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.74.26.162",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.74.26.194",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.74.26.73",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.75.128.193",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.75.228.31",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.75.228.32",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.75.228.33",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.75.228.69",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.75.26.194",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.75.26.195",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.75.26.50",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.75.26.52",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.75.26.73",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.78.65.127",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "10.78.65.17",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "192.168.125.124",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "192.168.196.120",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "192.168.66.105",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "192.168.92.126",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "192.168.92.127",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "192.168.92.73",
+            "notificationType": "trap",
+            "port": 162
+        },
+        {
+            "v1v2cParams": {
+                "communityString": "fluffytail"
+            },
+            "vrf": "mgmt",
+            "protocolVersion": "v2c",
+            "hostname": "29.0.5.27",
+            "notificationType": "trap",
+            "port": 162
+        }
+    ]
+}

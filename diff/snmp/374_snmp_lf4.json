@@ -1,0 +1,32 @@
+{
+    "hosts": {
+        "delete": [
+            [
+                39,
+                {
+                    "v1v2cParams": {
+                        "communityString": "fluffytail"
+                    },
+                    "vrf": "mgmt",
+                    "protocolVersion": "v2c",
+                    "hostname": "29.0.5.27",
+                    "notificationType": "trap",
+                    "port": 162
+                }
+            ],
+            [
+                38,
+                {
+                    "v1v2cParams": {
+                        "communityString": "fluffytail"
+                    },
+                    "vrf": "mgmt",
+                    "protocolVersion": "v2c",
+                    "hostname": "192.168.92.73",
+                    "notificationType": "trap",
+                    "port": 162
+                }
+            ]
+        ]
+    }
+}
