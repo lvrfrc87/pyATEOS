@@ -147,7 +147,7 @@ class WriteFile():
                 self.node
             ), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
-            print('BEFORE file ID: {}'.format(self.time_file))
+            print('BEFORE file ID for {} test: {}'.format(self.test.upper(), self.time_file))
 
 
     def write_after(self, result):
@@ -161,7 +161,7 @@ class WriteFile():
                 self.node
             ), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
-            print('AFTER file ID: {}'.format(self.time_file))
+            print('AFTER file ID for {} test: {}'.format(self.test.upper(), self.time_file))
 
 
     def write_diff(self):
@@ -220,7 +220,7 @@ class WriteFile():
                 self.test,
                 self.node), 'w', encoding='utf-8') as file:
             json.dump(json.loads(edit_json_diff), file, ensure_ascii=False, indent=4)
-            print('DIFF file ID: {}'.format(diff_file_id))
+            print('DIFF file ID for {} test: {}'.format(self.test.upper(), diff_file_id))
 
 
 def bef_aft_com(node, test, before=None, after=None, compare=None, file_name=None):
