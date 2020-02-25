@@ -17,7 +17,3 @@ class bgp_ipv4():
 
         except eapilib.CommandError:
             print('BGP IPv4 command "show bgp ipv4 unicast" not support by the platform')
-<<<<<<< HEAD:pyateos/plugins/bgp_ipv4.py
-
-=======
->>>>>>> 5c411facf0c54cd55cba37c26f939847f3ae3b43:pyateos/plugins/bgp_ipv4.py
