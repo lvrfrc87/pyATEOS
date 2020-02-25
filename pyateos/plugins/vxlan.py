@@ -17,6 +17,5 @@ class vxlan():
         
         except eapilib.CommandError:
             print('VXLAN command "show interfaces vxlan 1" not support by the platform')
-            pass
        
 
