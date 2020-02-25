@@ -1,6 +1,6 @@
 # pyATEOS
 
-Deliberately inspired by [pyATS](https://developer.cisco.com/docs/pyats/) and based on [pyEAPI](https://pyeapi.readthedocs.io/en/latest/) and [jsodiff](https://github.com/fzumstein/jsondiff) libraries, pyATEOS is a python framework to test the operational status of an Arista network. pyATS is based on SSH show command parsed via regex. Thanks to the powerful Arista API, every show command can be returned in JSON format skipping all the parse unstructured output pain. Ideally, a day pyATS will supprt Arista API as well.
+Deliberately inspired by [pyATS](https://developer.cisco.com/docs/pyats/) and based on [pyEAPI](https://pyeapi.readthedocs.io/en/latest/) and [jsodiff](https://github.com/fzumstein/jsondiff) libraries, pyATEOS is a python framework for operational status test on  Arista network. pyATS is based on SSH show command parsed via regex. Thanks to the powerful Arista API, every show command can be returned in JSON format skipping all the parse unstructured output pain. Ideally, a day pyATS will supprt Arista API as well.
 
 ### HOW IT WORKS
 A snapshot of the operational status of a switch is taken before a config or network change and compare against a second snapshot taken after the change. A diff file format is generated in .json format.
@@ -93,8 +93,51 @@ Remember, this does not show a config change, instead it shows the difference of
     }
 }
 ```
+### HOW TO RUN - IMPORT
+```
+>>> from pyateos import pyateos
+>>> 
+>>> my_dict = {
+    'invetory': 'eos_invenotry.ini',
+    'before': True,
+    'after': False,
+    'compare': False,
+    'test': ['ntp'],
+    'node': ['lf4'],
+    'file_name': None
+}
+>>> 
+>>> pyateos.pyateos(**my_dict)
+>>> BEFORE file ID for NTP test: 1582619302
+>>> 
+>>> my_dict = {
+    'invetory': 'eos_invenotry.ini',
+    'before': False,
+    'after': True,
+    'compare': False,
+    'test': ['ntp'],
+    'node': ['lf4'],
+    'file_name': None
+}
+>>> 
+>>> pyateos.pyateos(**my_dict)
+>>> AFTER file ID for NTP test: 1582619366
+>>> 
+>>> my_dict = {
+    'invetory': 'eos_invenotry.ini',
+    'before': False,
+    'after': False,
+    'compare': True,
+    'test': ['ntp'],
+    'node': ['lf4'],
+    'file_name': [1582619302, 1582619366]
+}
+>>> 
+>>> pyateos.pyateos(**my_dict)
+>>> DIFF file ID for NTP test: 64
+```
 
-### HOW TO RUN
+### HOW TO RUN - CLI
 An inventory must be defined as described in pyEAPI [doc](https://pyeapi.readthedocs.io/en/latest/configfile.html). A filesystem is automatically created at every code iteration (if required - idempotent). The fiename of before and after are in the follwing format `timestamp_node_test.json`. Diff filename is `(after_timpestamp - before_timestamp)_node_test.json`.
 
 Arguments list:
@@ -133,7 +176,7 @@ optional arguments:
 example - BEFORE a network config change for NTP server:
 
 ```
-./main.py -i eos_inventory.ini -n lf4 -t mgmt -B
+pyateos -i eos_inventory.ini -n lf4 -t mgmt -B
 BEFORE file ID for NTP test: 1582537406
 BEFORE file ID for SNMP test: 1582537409
 
@@ -144,7 +187,7 @@ ls -la before/ntp/
 example - AFTER a network config change for NTP server:
 
 ```
-./main.py -i eos_inventory.ini -n lf4 -t mgmt -A
+pyateos -i eos_inventory.ini -n lf4 -t mgmt -A
 AFTER file ID for NTP test: 1582537612
 AFTER file ID for SNMP test: 1582537614
 
@@ -155,7 +198,7 @@ ls -la after/ntp/
 diff example of the aboves for NTP.
 
 ```
-./main.py -i eos_inventory.ini -n lf4 -t ntp -C -F 1582537612 1582537406
+pyateos -i eos_inventory.ini -n lf4 -t ntp -C -F 1582537612 1582537406
 DIFF file ID for NTP test: 6
 
 ls -la diff/ntp/
