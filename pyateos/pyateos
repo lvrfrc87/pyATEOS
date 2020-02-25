@@ -9,23 +9,24 @@ import time
 import json
 import argparse
 from jsondiff import diff
+from jmespath import search
 from pyeapi import load_config
 from pyeapi import connect_to
-from pyateos.plugins.acl import acl
-from pyateos.plugins.as_path import as_path
-from pyateos.plugins.bgp_evpn import bgp_evpn
-from pyateos.plugins.bgp_ipv4 import bgp_ipv4
-from pyateos.plugins.interface import interface
-from pyateos.plugins.ip_route import ip_route
-from pyateos.plugins.mlag import mlag
-from pyateos.plugins.ntp import ntp
-from pyateos.plugins.prefix_list import prefix_list
-from pyateos.plugins.route_map import route_map
-from pyateos.plugins.snmp import snmp
-from pyateos.plugins.stp import stp
-from pyateos.plugins.vlan import vlan
-from pyateos.plugins.vrf import vrf
-from pyateos.plugins.vxlan import vxlan
+from plugins.acl import acl
+# from .plugins.as_path import as_path
+# from .plugins.bgp_evpn import bgp_evpn
+# from .plugins.bgp_ipv4 import bgp_ipv4
+# from .plugins.interface import interface
+from plugins.ip_route import ip_route
+# from .plugins.mlag import mlag
+from plugins.ntp import ntp
+# from .plugins.prefix_list import prefix_list
+# from .plugins.route_map import route_map
+from plugins.snmp import snmp
+# from .plugins.stp import stp
+from plugins.vlan import vlan
+# from .plugins.vrf import vrf
+# from .plugins.vxlan import vxlan
 
 def arguments():
     '''
@@ -122,7 +123,14 @@ def arguments():
         nargs='+',
         type=int,
         )
-
+    parser.add_argument(
+        '-f',
+        '--filter',
+        dest='diff_filter',
+        help='''filter output for config change only''',
+        action='store_true',
+        )
+    
     if parser.parse_args().compare and parser.parse_args().file is None:
         parser.error("-C/--compare requires -F/--file_name.")
 
@@ -151,7 +159,8 @@ def flags(args):
         before=args.before,
         after=args.after,
         compare=args.compare,
-        file_name=file_name
+        file_name=file_name,
+        diff_filter=args.diff_filter
         )
 
     return returned_dict
@@ -162,13 +171,14 @@ class WriteFile():
     entry point for test file write and filesystem build
     '''
 
-    def __init__(self, test, node, file_name=None):
+    def __init__(self, test, node, diff_filter=None, file_name=None):
         '''
         class' vars initialization
         '''
         self.test = test
         self.node = node
         self.file_name = file_name
+        self.diff_filter = diff_filter
         self.pwd_before = os.getcwd() + '/before/{}'.format(self.test)
         self.pwd_after = os.getcwd() + '/after/{}'.format(self.test)
         self.pwd_diff = os.getcwd() + '/diff/{}'.format(self.test)
@@ -215,7 +225,18 @@ class WriteFile():
         if not os.path.exists(self.pwd_diff):
             os.makedirs(self.pwd_diff)
 
-        def replace(string, substitutions):
+        def replace(string):
+            ''' jsondiff does not return legal json format. This function does 
+            some editing in order to have legal json returned'''
+            substitutions = {
+                '\'':'\"',
+                'insert':'"insert"',
+                'delete':'"delete"',
+                'True':'true',
+                'False':'false',
+                '(':'[',
+                ')':']',
+            }
 
             substrings = sorted(substitutions, key=len, reverse=True)
             regex = re.compile('|'.join(map(re.escape, substrings)))
@@ -226,15 +247,22 @@ class WriteFile():
 
             return sub_applied
 
-        substitutions = {
-            '\'':'\"',
-            'insert':'"insert"',
-            'delete':'"delete"',
-            'True':'true',
-            'False':'false',
-            '(':'[',
-            ')':']',
+        def diff_filter(test, legal_json_diff):
+            '''jmespath filter to reduce output verbosity.
+            Valid only for dict(dict()) type, not dict(list())'''
+
+            plugins_filter = {
+                'ntp': 'peers.{delete: delete, insert: insert}',
+                'vlan': 'vlans.{delete: delete, insert: insert}'
             }
+            
+            if plugins_filter.get(test):
+                final_diff = search(plugins_filter.get(test), legal_json_diff)
+            else:
+                final_diff = legal_json_diff
+            
+            return final_diff
+        
 
         try:
             before = open('{0}/{1}_{2}_{3}.json'.format(
@@ -257,15 +285,20 @@ class WriteFile():
             sys.exit(1)
 
         json_diff = str(diff(before, after, load=True, syntax='symmetric'))
-        edit_json_diff = replace(json_diff, substitutions)
+        legal_json_diff = replace(json_diff)
         diff_file_id = str((self.file_name[0] - self.file_name[1]) * -1)
+        
+        if not self.diff_filter:
+            final_diff = json.loads(legal_json_diff)
+        else:
+            final_diff = diff_filter(self.test, json.loads(legal_json_diff))
 
         with open('{0}/{1}_{2}_{3}.json'.format(
                 self.pwd_diff,
                 diff_file_id,
                 self.test,
                 self.node), 'w', encoding='utf-8') as file:
-            json.dump(json.loads(edit_json_diff), file, ensure_ascii=False, indent=4)
+            json.dump(final_diff, file, ensure_ascii=False, indent=4)
             print('DIFF file ID for {} test: {}'.format(self.test.upper(), diff_file_id))
 
 
@@ -281,6 +314,7 @@ def bef_aft_com(**kwargs):
         after = kwargs.get('after')
         compare = kwargs.get('compare')
         file_name = kwargs.get('file_name')
+        diff_filter = kwargs.get('diff_filter')
 
         nodes = kwargs.get('node')
         assert isinstance(nodes, list), '''
@@ -340,7 +374,7 @@ def bef_aft_com(**kwargs):
                 wr_after = WriteFile(test, node)
                 wr_after.write_after(eval(test)(connect_to(node)).show)
             elif compare:
-                wr_diff = WriteFile(test, node, file_name)
+                wr_diff = WriteFile(test, node, diff_filter, file_name)
                 wr_diff.write_diff()
 
 
