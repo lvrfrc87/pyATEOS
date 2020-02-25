@@ -6,4 +6,7 @@ pip-selfcheck.json
 plugins/__pycache__
 test/vagrant/.vagrant
 eos_inventory.ini
-setup.py
+build/
+dist/
+pyateos.egg-info/
+.DS_Store
