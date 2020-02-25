@@ -11,3 +11,7 @@ class stp():
         result = cmd[0]['result']
 
         return result
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5c411facf0c54cd55cba37c26f939847f3ae3b43

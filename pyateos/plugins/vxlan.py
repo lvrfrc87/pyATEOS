@@ -14,8 +14,11 @@ class vxlan():
             result = cmd[0]['result']
 
             return result
-        
+
         except eapilib.CommandError:
             print('VXLAN command "show interfaces vxlan 1" not support by the platform')
+<<<<<<< HEAD:pyateos/plugins/vxlan.py
        
 
+=======
+>>>>>>> 5c411facf0c54cd55cba37c26f939847f3ae3b43:pyateos/plugins/vxlan.py
