@@ -3,10 +3,14 @@ include
 lib
 .Python
 pip-selfcheck.json
-plugins/__pycache__
+pyateos/plugins/__pycache__/
 test/vagrant/.vagrant
 eos_inventory.ini
 build/
 dist/
 pyateos.egg-info/
 .DS_Store
+after/
+before/
+diff/
+
