@@ -12,28 +12,29 @@ from jsondiff import diff
 from jmespath import search
 from pyeapi import load_config
 from pyeapi import connect_to
-from plugins.acl import acl
-# from .plugins.as_path import as_path
-# from .plugins.bgp_evpn import bgp_evpn
-# from .plugins.bgp_ipv4 import bgp_ipv4
-# from .plugins.interface import interface
-from plugins.ip_route import ip_route
-# from .plugins.mlag import mlag
-from plugins.ntp import ntp
-# from .plugins.prefix_list import prefix_list
-# from .plugins.route_map import route_map
-from plugins.snmp import snmp
-# from .plugins.stp import stp
-from plugins.vlan import vlan
-# from .plugins.vrf import vrf
-# from .plugins.vxlan import vxlan
+from pyateos.plugins.acl import acl
+from pyateos.plugins.as_path import as_path
+from pyateos.plugins.bgp_evpn import bgp_evpn
+from pyateos.plugins.bgp_ipv4 import bgp_ipv4
+from pyateos.plugins.interface import interface
+from pyateos.plugins.ip_route import ip_route
+from pyateos.plugins.mlag import mlag
+from pyateos.plugins.ntp import ntp
+from pyateos.plugins.prefix_list import prefix_list
+from pyateos.plugins.route_map import route_map
+from pyateos.plugins.snmp import snmp
+from pyateos.plugins.stp import stp
+from pyateos.plugins.vlan import vlan
+from pyateos.plugins.vrf import vrf
+from pyateos.plugins.vxlan import vxlan
 
 def arguments():
     '''
-    Arguments function for pyATEOS cli usage:
-
     usage: pyATEOS [-h] (-B | -A | -C) [-i INVENTORY] -n NODE [NODE ...] -t TEST
-               [TEST ...] [-F FILE [FILE ...]]
+               [TEST ...] [-F FILE [FILE ...]] [-f]
+
+    pyATEOS - A simple python application for operational status test on Arista
+    device. Based on pyATS idea and pyeapi library for API calls.
 
     optional arguments:
     -h, --help            show this help message and exit
@@ -57,7 +58,7 @@ def arguments():
                             provide the 2 filename IDs to compare, separated by
                             space. BEFORE first, AFTER second. i.e [..] -C -f
                             1582386835 1582387929
-
+    -f, --filter          filter counters where present
     '''
 
     parser = argparse.ArgumentParser(
@@ -127,7 +128,7 @@ def arguments():
         '-f',
         '--filter',
         dest='diff_filter',
-        help='''filter output for config change only''',
+        help='''filter counters where present''',
         action='store_true',
         )
     
@@ -225,9 +226,8 @@ class WriteFile():
         if not os.path.exists(self.pwd_diff):
             os.makedirs(self.pwd_diff)
 
-        def replace(string):
-            ''' jsondiff does not return legal json format. This function does 
-            some editing in order to have legal json returned'''
+        def replace(string, test):
+            ''' jsondiff editing for returning legal json format'''
             substitutions = {
                 '\'':'\"',
                 'insert':'"insert"',
@@ -238,12 +238,18 @@ class WriteFile():
                 ')':']',
             }
 
+            skip_list = [
+                'bgp_evpn',
+                'vrf',
+            ]
+
             substrings = sorted(substitutions, key=len, reverse=True)
             regex = re.compile('|'.join(map(re.escape, substrings)))
             sub_applied = regex.sub(lambda match: substitutions[match.group(0)], string)
-
-            for integer in re.findall(r'\d+:', sub_applied):
-                sub_applied = sub_applied.replace(integer, f'"{integer[:-1]}":')
+            
+            if test not in skip_list:
+                for integer in re.findall(r'\d+:', sub_applied):
+                    sub_applied = sub_applied.replace(integer, f'"{integer[:-1]}":')
 
             return sub_applied
 
@@ -253,15 +259,60 @@ class WriteFile():
 
             plugins_filter = {
                 'ntp': 'peers.{delete: delete, insert: insert}',
-                'vlan': 'vlans.{delete: delete, insert: insert}'
+                'vlan': 'vlans.{delete: delete, insert: insert}',
+                'as_path': 'activeIpAsPathLists.{delete: delete, insert: insert}',
             }
             
             if plugins_filter.get(test):
                 final_diff = search(plugins_filter.get(test), legal_json_diff)
+            elif test == 'interface':
+                final_diff = filter_iface_counters(legal_json_diff)
             else:
                 final_diff = legal_json_diff
             
             return final_diff
+
+        def filter_iface_counters(legal_json_diff):
+            '''
+            "Ethernet47": {
+                "interfaceStatus": [
+                    "connected",
+                    "disabled"
+                ],
+            ----------------------------------------    
+            "Recirc-Channel1500": {
+                "memberInterfaces": {
+                    "insert": {
+                        "Ethernet47": {
+                            "duplex": "duplexFull",
+                            "bandwidth": 25000000000
+                        }
+                    }
+                },
+            ----------------------------------------
+            "insert": {
+                "Loopback999": {
+            ----------------------------------------
+            "delete": {
+                "Loopback270": {            
+            '''
+            
+            return_dict = {'interfaces': {}}
+
+            for ifaces in legal_json_diff.values():
+                for iface_name, iface_values in ifaces.items():
+
+                    if iface_values.get('interfaceStatus'):
+                        return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]['interfaceStatus']
+                
+                    if iface_values.get('memberInterfaces'):
+                        if iface_values['memberInterfaces'].get('delete') or iface_values['memberInterfaces'].get('insert'):
+                            return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]['memberInterfaces']
+                    
+                    if iface_name == 'insert' or iface_name == 'delete':
+                        return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]
+
+            return return_dict
         
 
         try:
@@ -285,7 +336,7 @@ class WriteFile():
             sys.exit(1)
 
         json_diff = str(diff(before, after, load=True, syntax='symmetric'))
-        legal_json_diff = replace(json_diff)
+        legal_json_diff = replace(json_diff, self.test)
         diff_file_id = str((self.file_name[0] - self.file_name[1]) * -1)
         
         if not self.diff_filter:
