@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyateos",
-    version="0.1.3",
+    version="0.1.5",
     author="Federico Olivieri",
     author_email="lvrfrc87@gmail.com",
     description="python framework to test operational status of an Arista network",
@@ -14,7 +14,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://gitlab.com/networkAutomation/pyateos",
     packages=setuptools.find_packages(),
-    install_requires=['jsondiff>=1.2.0','pyeapi>=0.8.3'],
+    install_requires=['jsondiff>=1.2.0','pyeapi>=0.8.3', 'jmespath>=0.9.5'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
