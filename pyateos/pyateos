@@ -253,6 +253,7 @@ class WriteFile():
 
             return sub_applied
 
+
         def diff_filter(test, legal_json_diff):
             '''jmespath filter to reduce output verbosity.
             Valid only for dict(dict()) type, not dict(list())'''
@@ -271,6 +272,7 @@ class WriteFile():
                 final_diff = legal_json_diff
             
             return final_diff
+
 
         def filter_iface_counters(legal_json_diff):
             '''
@@ -377,20 +379,23 @@ def bef_aft_com(**kwargs):
 
     test_all = [
         'acl',
+        'arp',
         'as_path',
         'bgp_evpn',
         'bgp_ipv4',
         'interface',
         'ip_route',
+        'mac',
         'mlag',
         'ntp',
+        'lldp',
         'prefix_list',
         'route_map',
         'snmp',
         'stp',
         'vlan',
         'vrf',
-        'vxlan'
+        'vxlan',
     ]
 
     if 'mgmt' in test:
@@ -401,7 +406,7 @@ def bef_aft_com(**kwargs):
         test_run.extend(('bgp_evpn', 'bgp_ipv4', 'ip_route'))
     elif 'layer2' in test:
         test.remove('layer2')
-        test_run.extend(('stp', 'vlan', 'vxlan'))
+        test_run.extend(('stp', 'vlan', 'vxlan', 'lldp', 'arp', 'mac'))
     elif 'ctrl' in test:
         test.remove('ctrl')
         test_run.extend(('acl', 'as_path', 'prefix_list', 'route_map'))
@@ -496,3 +501,5 @@ if __name__ == '__main__':
         kwargs = flags(arguments())
 
     pyateos(**kwargs)
+
+#f20200301
