@@ -9,7 +9,7 @@ Deliberately inspired by [pyATS](https://developer.cisco.com/docs/pyats/) and ba
 - HOW TO RUN - CLI
 - FILTER
 - TEST SUPPORTED
-- THE `SHOW` COMMANDS
+- THE `SHOW` COMMANDS BEHIND THE PLUGINS
 - ANSIBLE PYATEOS
 ----
 
@@ -377,7 +377,7 @@ Look for `test_all` list and add your test there. If you want, you can add your 
     ]
 ```
 
-### THE `SHOW` COMMANDS
+### THE `SHOW` COMMANDS COMMANDS BEHIND THE PLUGINS
 Every pyATEOS plugin run a specific run command. To better understand which output you will expect by each test, here the full list of plugins/commands:
 ```
 acl:            show ip access-lists
