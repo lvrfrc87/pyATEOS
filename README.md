@@ -226,7 +226,6 @@ Even thugh `before` and `after` test can be run using groups, every diff must be
 ### FILTER
 Some test outputs like interfaces or ntp have counters that constantly change. Therefore the diff will aways return a quite verbose output, making difficult to spot the what has been `insert` or `delete`. Apply `-f` or `--filter` will prune all unecessary counters.
 Filters are only valid for those test that return dict(dict()). For dict(list()) return, filters are transparent.
-Filter is working for `vlan` `ntp` `interfaces` `as_path`
 
 Example no filter applied to NTP test
 
