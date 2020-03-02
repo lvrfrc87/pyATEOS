@@ -157,8 +157,8 @@ An inventory must be defined as described in pyEAPI [doc](https://pyeapi.readthe
 Arguments list:
 
 ```
-    usage: pyATEOS [-h] (-B | -A | -C) [-i INVENTORY] -n NODE [NODE ...] -t TEST
-               [TEST ...] [-F FILE [FILE ...]] [-f]
+    usage: pyATEOS [-h] (-B | -A | -C) -t TEST [TEST ...] [-g GROUP [GROUP ...]]
+               [-i INVENTORY] -n NODE [NODE ...] [-F FILE [FILE ...]] [-f]
 
     pyATEOS - A simple python application for operational status test on Arista
     device. Based on pyATS idea and pyeapi library for API calls.
@@ -173,14 +173,18 @@ Arguments list:
                             $PWD/after/ip_route/router1_ip_route.json
     -C, --compare         diff between before and after test files. File path
                             example: $PWD/diff/snmp/router1_snmp.json
+    -t TEST [TEST ...], --test TEST [TEST ...]
+                            run one or more specific test. Multiple values are
+                            accepted separated by space
+    -g GROUP [GROUP ...], --group GROUP [GROUP ...]
+                            run a subset of test. Options available: mgmt,
+                            routing, layer2, ctrl, all Multiple values are
+                            accepted separated by space. Works also with -t --test
     -i INVENTORY, --inventory INVENTORY
                             specify pyeapi inventory file path
     -n NODE [NODE ...], --node NODE [NODE ...]
                             specify inventory node. Multiple values are accepted
                             separated by space
-    -t TEST [TEST ...], --test TEST [TEST ...]
-                            run one or more specific test. Multiple values are
-                            accepted separated by space
     -F FILE [FILE ...], --file_name FILE [FILE ...]
                             provide the 2 filename IDs to compare, separated by
                             space. BEFORE first, AFTER second. i.e [..] -C -f
@@ -220,8 +224,16 @@ ls -la diff/ntp/
 -rw-r--r--  1 federicoolivieri  staff     2 24 Feb 10:43 6_ntp_lf4.json
 ```
 
-Even thugh `before` and `after` test can be run using groups, every diff must be run for every test. More improovements will come (keep on eye to issue repo)
+`group` and `test` can be use together:
 
+```
+pyateos -g mgmt -t bgp_evpn -n lf4 -i ../eos_inventory.ini -B
+BEFORE file ID for NTP test: 1583161168
+BEFORE file ID for BGP_EVPN test: 1583161171
+BEFORE file ID for SNMP test: 1583161172
+```
+
+Even thugh `before` and `after` test can be run using groups, every diff must be run for every single test. Is not possible (yet) to run diff for a group of test
 
 ### FILTER
 Some test outputs like interfaces or ntp have counters that constantly change. Therefore the diff will aways return a quite verbose output, making difficult to spot the what has been `insert` or `delete`. Apply `-f` or `--filter` will prune all unecessary counters.
@@ -336,10 +348,16 @@ vxlan
 ```
 
 Some of the test are grouped together like: 
+
 `mgmt: ntp, snmp`, 
+
 `routing: bgp_evpn, bgp_ipv4, ip_route`, 
-`layer2: stp, vlan, vxlan, lldp, arp, mac`, 
-`ctrl: acl, as_path, prefix_list, route_map` and `all` running all test availables under `plugins`. 
+
+`layer2: stp, vlan, vxlan, lldp, arp, mac`,
+
+`ctrl: acl, as_path, prefix_list, route_map` 
+
+`all` running all test availables under `plugins`. 
 
 ### ADD NEW PLUGINS
 New plugins can be easily created and added under `plugins/` folder. Give to the file a meaningful name and copy the below content. The test name will be equal to the class name.
