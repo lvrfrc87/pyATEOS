@@ -180,9 +180,9 @@ class WriteFile():
         self.node = node
         self.file_name = file_name
         self.diff_filter = diff_filter
-        self.pwd_before = os.getcwd() + '/before/{}'.format(self.test)
-        self.pwd_after = os.getcwd() + '/after/{}'.format(self.test)
-        self.pwd_diff = os.getcwd() + '/diff/{}'.format(self.test)
+        self.pwd_before = os.getcwd() + '/tests/before/{0}/{1}/'.format(self.test, self.node)
+        self.pwd_after = os.getcwd() + '/tests/after/{0}/{1}/'.format(self.test, self.node)
+        self.pwd_diff = os.getcwd() + '/tests/diff/{0}/{1}/'.format(self.test, self.node)
         self.time_file = round(time.time())
 
     def write_before(self, result):
@@ -192,11 +192,9 @@ class WriteFile():
         if not os.path.exists(self.pwd_before):
             os.makedirs(self.pwd_before)
 
-        with open('{0}/{1}_{2}_{3}.json'.format(
+        with open('{0}/{1}.json'.format(
                 self.pwd_before,
                 self.time_file,
-                self.test,
-                self.node
             ), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
             print('BEFORE file ID for {} test: {}'.format(self.test.upper(), self.time_file))
@@ -209,11 +207,10 @@ class WriteFile():
         if not os.path.exists(self.pwd_after):
             os.makedirs(self.pwd_after)
 
-        with open('{0}/{1}_{2}_{3}.json'.format(
+        with open('{0}/{1}.json'.format(
                 self.pwd_after,
                 self.time_file,
-                self.test,
-                self.node
+
             ), 'w', encoding='utf-8') as file:
             json.dump(result, file, ensure_ascii=False, indent=4)
             print('AFTER file ID for {} test: {}'.format(self.test.upper(), self.time_file))
@@ -318,21 +315,19 @@ class WriteFile():
         
 
         try:
-            before = open('{0}/{1}_{2}_{3}.json'.format(
+            before = open('{0}/{1}.json'.format(
                 self.pwd_before,
                 self.file_name[0],
-                self.test,
-                self.node), 'r')
+                ), 'r')
         except FileNotFoundError as error:
             print(error)
             sys.exit(1)
 
         try:
-            after = open('{0}/{1}_{2}_{3}.json'.format(
+            after = open('{0}/{1}.json'.format(
                 self.pwd_after,
                 self.file_name[1],
-                self.test,
-                self.node), 'r')
+                ), 'r')
         except FileNotFoundError as error:
             print(error)
             sys.exit(1)
@@ -346,11 +341,10 @@ class WriteFile():
         else:
             final_diff = diff_filter(self.test, json.loads(legal_json_diff))
 
-        with open('{0}/{1}_{2}_{3}.json'.format(
+        with open('{0}/{1}.json'.format(
                 self.pwd_diff,
                 diff_file_id,
-                self.test,
-                self.node), 'w', encoding='utf-8') as file:
+                ), 'w', encoding='utf-8') as file:
             json.dump(final_diff, file, ensure_ascii=False, indent=4)
             print('DIFF file ID for {} test: {}'.format(self.test.upper(), diff_file_id))
 
@@ -467,20 +461,23 @@ def pyateos(**kwargs):
             required: True
             options: [
                 'acl',
+                'arp',
                 'as_path',
                 'bgp_evpn',
                 'bgp_ipv4',
                 'interface',
                 'ip_route',
+                'mac',
                 'mlag',
                 'ntp',
+                'lldp',
                 'prefix_list',
                 'route_map',
                 'snmp',
                 'stp',
                 'vlan',
                 'vrf',
-                'vxlan'
+                'vxlan',
             ]
     '''
 
@@ -502,4 +499,4 @@ if __name__ == '__main__':
 
     pyateos(**kwargs)
 
-#f20200301
+#f20200302 v0.1.6
