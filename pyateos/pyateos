@@ -30,8 +30,8 @@ from pyateos.plugins.vxlan import vxlan
 
 def arguments():
     '''
-    usage: pyATEOS [-h] (-B | -A | -C) [-i INVENTORY] -n NODE [NODE ...] -t TEST
-               [TEST ...] [-F FILE [FILE ...]] [-f]
+    usage: pyATEOS [-h] (-B | -A | -C) -t TEST [TEST ...] [-g GROUP [GROUP ...]]
+               [-i INVENTORY] -n NODE [NODE ...] [-F FILE [FILE ...]] [-f]
 
     pyATEOS - A simple python application for operational status test on Arista
     device. Based on pyATS idea and pyeapi library for API calls.
@@ -46,14 +46,18 @@ def arguments():
                             $PWD/after/ip_route/router1_ip_route.json
     -C, --compare         diff between before and after test files. File path
                             example: $PWD/diff/snmp/router1_snmp.json
+    -t TEST [TEST ...], --test TEST [TEST ...]
+                            run one or more specific test. Multiple values are
+                            accepted separated by space
+    -g GROUP [GROUP ...], --group GROUP [GROUP ...]
+                            run a subset of test. Options available: mgmt,
+                            routing, layer2, ctrl, all Multiple values are
+                            accepted separated by space. Works also with -t --test
     -i INVENTORY, --inventory INVENTORY
                             specify pyeapi inventory file path
     -n NODE [NODE ...], --node NODE [NODE ...]
                             specify inventory node. Multiple values are accepted
                             separated by space
-    -t TEST [TEST ...], --test TEST [TEST ...]
-                            run one or more specific test. Multiple values are
-                            accepted separated by space
     -F FILE [FILE ...], --file_name FILE [FILE ...]
                             provide the 2 filename IDs to compare, separated by
                             space. BEFORE first, AFTER second. i.e [..] -C -f
@@ -94,6 +98,21 @@ def arguments():
         File path example: $PWD/diff/snmp/router1_snmp.json'''
         )
     parser.add_argument(
+        '-t',
+        '--test',
+        dest='test',
+        help='run one or more specific test. Multiple values are accepted separated by space',
+        nargs='+',
+        )
+    parser.add_argument(
+        '-g',
+        '--group',
+        dest='group',
+        help='''run a subset of test. Options available: mgmt, routing, layer2, ctrl, all
+        Multiple values are accepted separated by space. Works also with -t --test''',
+        nargs='+',
+        )
+    parser.add_argument(
         '-i',
         '--inventory',
         dest='inventory',
@@ -104,14 +123,6 @@ def arguments():
         '--node',
         dest='node',
         help='specify inventory node. Multiple values are accepted separated by space',
-        nargs='+',
-        required=True
-        )
-    parser.add_argument(
-        '-t',
-        '--test',
-        dest='test',
-        help='run one or more specific test. Multiple values are accepted separated by space',
         nargs='+',
         required=True
         )
@@ -134,6 +145,9 @@ def arguments():
     
     if parser.parse_args().compare and parser.parse_args().file is None:
         parser.error("-C/--compare requires -F/--file_name.")
+
+    if not (parser.parse_args().test or parser.parse_args().group):
+        parser.error("Either -t/--test or -g/--group is required.")
 
     return parser.parse_args()
 
@@ -161,7 +175,8 @@ def flags(args):
         after=args.after,
         compare=args.compare,
         file_name=file_name,
-        diff_filter=args.diff_filter
+        diff_filter=args.diff_filter,
+        group=args.group,
         )
 
     return returned_dict
@@ -388,14 +403,21 @@ def bef_aft_com(**kwargs):
         compare = kwargs.get('compare')
         file_name = kwargs.get('file_name')
         diff_filter = kwargs.get('diff_filter')
+        group = kwargs.get('group')
 
         nodes = kwargs.get('node')
         assert isinstance(nodes, list), '''
         "nodes" must be of type list()'''
 
         test = kwargs.get('test')
-        assert isinstance(test, list), '''
-        "test" must be of type list()'''
+
+        if test:
+            assert isinstance(test, list), '''
+            "test" must be of type list()'''
+
+        if group:
+            assert isinstance(group, list), '''
+            "group" must be of type list()'''
 
     test_all = [
         'acl',
@@ -418,23 +440,25 @@ def bef_aft_com(**kwargs):
         'vxlan',
     ]
 
-    if 'mgmt' in test:
-        test.remove('mgmt')
-        test_run.extend(('ntp', 'snmp'))
-    elif 'routing' in test:
-        test.remove('routing')
-        test_run.extend(('bgp_evpn', 'bgp_ipv4', 'ip_route'))
-    elif 'layer2' in test:
-        test.remove('layer2')
-        test_run.extend(('stp', 'vlan', 'vxlan', 'lldp', 'arp', 'mac'))
-    elif 'ctrl' in test:
-        test.remove('ctrl')
-        test_run.extend(('acl', 'as_path', 'prefix_list', 'route_map'))
-    elif 'all' in test:
-        test.remove('all')
-        test_run = test_all
+    if group:
+        if 'mgmt' in group:
+            group.remove('mgmt')
+            test_run.extend(('ntp', 'snmp'))
+        elif 'routing' in group:
+            group.remove('routing')
+            test_run.extend(('bgp_evpn', 'bgp_ipv4', 'ip_route'))
+        elif 'layer2' in group:
+            group.remove('layer2')
+            test_run.extend(('stp', 'vlan', 'vxlan', 'lldp', 'arp', 'mac'))
+        elif 'ctrl' in group:
+            group.remove('ctrl')
+            test_run.extend(('acl', 'as_path', 'prefix_list', 'route_map'))
+        elif 'all' in group:
+            group.remove('all')
+            test_run = test_all
 
-    test_run.extend(test)
+    if test:
+        test_run.extend(test)
 
     for node in nodes:
         for test in list(set(test_run)):
@@ -482,9 +506,11 @@ def pyateos(**kwargs):
             type: list()
             required: True
 
+        group:
+            type: list
+
         test:
             type: list()
-            required: True
             options: [
                 'acl',
                 'arp',
@@ -514,7 +540,7 @@ def pyateos(**kwargs):
 
     load_config(inventory)
 
-    if kwargs.get('test'):
+    if kwargs.get('test') or kwargs.get('group'):
         bef_aft_com(**kwargs)
 
 
