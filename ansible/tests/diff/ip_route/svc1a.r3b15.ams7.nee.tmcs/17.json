@@ -1,0 +1,301 @@
+{
+    "vrfs": {
+        "default": {
+            "routes": {
+                "10.76.96.6/32": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.8/32": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.69/32": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.167/32": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.42/31": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.168/32": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.44/31": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.6/31": {
+                    "vias": {
+                        "0:": {
+                            "interface": [
+                                "Ethernet49/1",
+                                "Vlan4093"
+                            ],
+                            "nexthopAddr": [
+                                "10.76.100.0",
+                                "10.76.100.40"
+                            ],
+                            "delete": {
+                                "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45"
+                            }
+                        }
+                    },
+                    "routeType": [
+                        "eBGP",
+                        "iBGP"
+                    ],
+                    "preference": [
+                        20,
+                        200
+                    ]
+                },
+                "10.76.96.170/32": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.8/31": {
+                    "vias": {
+                        "0:": {
+                            "interface": [
+                                "Ethernet49/1",
+                                "Vlan4093"
+                            ],
+                            "nexthopAddr": [
+                                "10.76.100.0",
+                                "10.76.100.40"
+                            ],
+                            "delete": {
+                                "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45"
+                            }
+                        }
+                    },
+                    "routeType": [
+                        "eBGP",
+                        "iBGP"
+                    ],
+                    "preference": [
+                        20,
+                        200
+                    ]
+                },
+                "10.76.96.5/32": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.7/32": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.67/32": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.169/32": {
+                    "vias": {
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "interface": "Ethernet49/1",
+                                    "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45",
+                                    "nexthopAddr": "10.76.100.0"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.1/32": {
+                    "vias": {
+                        "0:": {
+                            "interface": [
+                                "Ethernet49/1",
+                                "Vlan4093"
+                            ],
+                            "nexthopAddr": [
+                                "10.76.100.0",
+                                "10.76.100.40"
+                            ],
+                            "delete": {
+                                "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45"
+                            }
+                        }
+                    },
+                    "routeType": [
+                        "eBGP",
+                        "iBGP"
+                    ],
+                    "preference": [
+                        20,
+                        200
+                    ]
+                },
+                "10.76.100.10/31": {
+                    "vias": {
+                        "0:": {
+                            "interface": [
+                                "Ethernet49/1",
+                                "Vlan4093"
+                            ],
+                            "nexthopAddr": [
+                                "10.76.100.0",
+                                "10.76.100.40"
+                            ],
+                            "delete": {
+                                "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45"
+                            }
+                        }
+                    },
+                    "routeType": [
+                        "eBGP",
+                        "iBGP"
+                    ],
+                    "preference": [
+                        20,
+                        200
+                    ]
+                },
+                "10.76.100.4/31": {
+                    "vias": {
+                        "0:": {
+                            "interface": [
+                                "Ethernet49/1",
+                                "Vlan4093"
+                            ],
+                            "nexthopAddr": [
+                                "10.76.100.0",
+                                "10.76.100.40"
+                            ],
+                            "delete": {
+                                "interfaceDescription": "s1a.r3b15.ams7.nee.tmcs_port_45"
+                            }
+                        }
+                    },
+                    "routeType": [
+                        "eBGP",
+                        "iBGP"
+                    ],
+                    "preference": [
+                        20,
+                        200
+                    ]
+                }
+            }
+        }
+    }
+}

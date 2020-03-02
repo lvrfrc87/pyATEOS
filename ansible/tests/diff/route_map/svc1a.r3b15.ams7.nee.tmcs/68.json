@@ -1,0 +1,44 @@
+{
+    "routeMaps": {
+        "insert": {
+            "T999-loopback": {
+                "entries": {
+                    "10": {
+                        "setRules": {
+                            "nextHop": {
+                                "ipAddress": "10.76.96.165",
+                                "nextHopType": "ipAddress"
+                            }
+                        },
+                        "subRouteMap": "",
+                        "filterType": "permit",
+                        "matchRules": {
+                            "interface": "Loopback10"
+                        },
+                        "description": []
+                    }
+                }
+            }
+        },
+        "delete": {
+            "T666-loopback": {
+                "entries": {
+                    "10": {
+                        "setRules": {
+                            "nextHop": {
+                                "ipAddress": "10.76.96.165",
+                                "nextHopType": "ipAddress"
+                            }
+                        },
+                        "subRouteMap": "",
+                        "filterType": "permit",
+                        "matchRules": {
+                            "interface": "Loopback10"
+                        },
+                        "description": []
+                    }
+                }
+            }
+        }
+    }
+}

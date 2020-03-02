@@ -1,0 +1,19 @@
+{
+    "peers": {
+        "ns2.sys.cloudsys.tmcs": {
+            "delay": 0.426,
+            "jitter": 0.0,
+            "lastReceived": 1583162316.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": -0.379,
+            "peerIpAddr": "10.75.33.5",
+            "pollInterval": 64,
+            "refid": "169.254.0.1",
+            "stratumLevel": 3
+        }
+    }
+}

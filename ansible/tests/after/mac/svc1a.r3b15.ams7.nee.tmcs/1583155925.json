@@ -1,0 +1,889 @@
+{
+    "multicastTable": {
+        "tableEntries": []
+    },
+    "unicastTable": {
+        "tableEntries": [
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 10
+            },
+            {
+                "macAddress": "5c:b9:01:9c:e7:40",
+                "lastMove": 1583155526.317673,
+                "interface": "Vxlan1",
+                "moves": 1,
+                "entryType": "dynamic",
+                "vlanId": 10
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 10
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 10
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 10
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 20
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 20
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 20
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 20
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 30
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 30
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 30
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 30
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 40
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 40
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 40
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 40
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 50
+            },
+            {
+                "macAddress": "5c:b9:01:9c:e6:f9",
+                "lastMove": 1583068937.555156,
+                "interface": "Vxlan1",
+                "moves": 1,
+                "entryType": "dynamic",
+                "vlanId": 50
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 50
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 50
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 50
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 60
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 60
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 60
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 60
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1000
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1000
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 1000
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1000
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1910
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1910
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 1910
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1910
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1920
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1920
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 1920
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1920
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1930
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1930
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 1930
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1930
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1940
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1940
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 1940
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1940
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1950
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1950
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 1950
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1950
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1960
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1960
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 1960
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 1960
+            },
+            {
+                "macAddress": "00:09:0f:09:00:82",
+                "lastMove": 1583155847.021558,
+                "interface": "Port-Channel1000",
+                "moves": 1,
+                "entryType": "dynamic",
+                "vlanId": 2010
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 2010
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 2010
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 2010
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 2010
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 2050
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 2050
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 2050
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 2050
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4000
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4000
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4000
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4000
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4001
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4001
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4001
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4001
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4002
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4002
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4002
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4002
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4010
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4010
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4010
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4010
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4083
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4083
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4083
+            },
+            {
+                "macAddress": "9a:5d:82:93:37:bf",
+                "lastMove": 1582878305.273176,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4083
+            },
+            {
+                "macAddress": "9a:5d:82:93:52:57",
+                "lastMove": 1582878305.262222,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4083
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4083
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4084
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4084
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4084
+            },
+            {
+                "macAddress": "9a:5d:82:93:37:bf",
+                "lastMove": 1583070500.006148,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4084
+            },
+            {
+                "macAddress": "9a:5d:82:93:52:57",
+                "lastMove": 1583070445.633055,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4084
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4084
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4085
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4085
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4085
+            },
+            {
+                "macAddress": "9a:5d:82:93:37:bf",
+                "lastMove": 1582878305.262396,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4085
+            },
+            {
+                "macAddress": "9a:5d:82:93:52:57",
+                "lastMove": 1582878305.315933,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4085
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4085
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4086
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4086
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4086
+            },
+            {
+                "macAddress": "9a:5d:82:93:37:bf",
+                "lastMove": 1582878305.272567,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4086
+            },
+            {
+                "macAddress": "9a:5d:82:93:52:57",
+                "lastMove": 1582878305.304342,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4086
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4086
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4087
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4087
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4087
+            },
+            {
+                "macAddress": "9a:5d:82:93:37:bf",
+                "lastMove": 1582878305.273094,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4087
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4087
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4089
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4089
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4089
+            },
+            {
+                "macAddress": "9a:5d:82:93:37:bf",
+                "lastMove": 1583070484.279054,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4089
+            },
+            {
+                "macAddress": "9a:5d:82:93:52:57",
+                "lastMove": 1583070455.757277,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4089
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4089
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4090
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4090
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4090
+            },
+            {
+                "macAddress": "9a:5d:82:93:37:bf",
+                "lastMove": 1582878305.276214,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4090
+            },
+            {
+                "macAddress": "9a:5d:82:93:52:57",
+                "lastMove": 1582878305.272979,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4090
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4090
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4091
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4091
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4091
+            },
+            {
+                "macAddress": "9a:5d:82:93:37:bf",
+                "lastMove": 1582878305.323189,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4091
+            },
+            {
+                "macAddress": "9a:5d:82:93:52:57",
+                "lastMove": 1582878305.323012,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4091
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4091
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4092
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4092
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4092
+            },
+            {
+                "macAddress": "9a:5d:82:93:37:bf",
+                "lastMove": 1582878305.315634,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4092
+            },
+            {
+                "macAddress": "9a:5d:82:93:52:57",
+                "lastMove": 1582878305.272755,
+                "interface": "Vxlan1",
+                "moves": 0,
+                "entryType": "dynamic",
+                "vlanId": 4092
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4092
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4093
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4093
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4093
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4093
+            },
+            {
+                "macAddress": "00:11:11:11:11:11",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4094
+            },
+            {
+                "macAddress": "98:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4094
+            },
+            {
+                "macAddress": "98:5d:82:96:6c:0b",
+                "interface": "Port-Channel1000",
+                "entryType": "static",
+                "vlanId": 4094
+            },
+            {
+                "macAddress": "9a:5d:82:96:52:51",
+                "interface": "Router",
+                "entryType": "static",
+                "vlanId": 4094
+            }
+        ]
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "peers": {
+        "ns1.sys.cloudsys.tmcs": {
+            "delay": 0.475,
+            "jitter": 0.0,
+            "lastReceived": 1583155706.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": 0.101,
+            "peerIpAddr": "10.75.32.5",
+            "pollInterval": 64,
+            "refid": "169.254.0.1",
+            "stratumLevel": 3
+        },
+        "time2.google.com": {
+            "delay": 10.006,
+            "jitter": 0.0,
+            "lastReceived": 1583155707.0,
+            "peerType": "unicast",
+            "reachabilityHistory": [
+                true
+            ],
+            "condition": "reject",
+            "offset": -24.55,
+            "peerIpAddr": "216.239.35.4",
+            "pollInterval": 64,
+            "refid": ".GOOG.",
+            "stratumLevel": 1
+        }
+    }
+}

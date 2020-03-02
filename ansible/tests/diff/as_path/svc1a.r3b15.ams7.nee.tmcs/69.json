@@ -1,0 +1,26 @@
+{
+    "delete": {
+        "666": {
+            "ipAsPathEntries": [
+                {
+                    "filterType": "permit",
+                    "origin": "bgpAny",
+                    "userRegex": "^$"
+                }
+            ],
+            "ipAsPathListSource": ""
+        }
+    },
+    "insert": {
+        "999": {
+            "ipAsPathEntries": [
+                {
+                    "filterType": "permit",
+                    "origin": "bgpAny",
+                    "userRegex": "^$"
+                }
+            ],
+            "ipAsPathListSource": ""
+        }
+    }
+}

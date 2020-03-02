@@ -10,7 +10,5 @@ build/
 dist/
 pyateos.egg-info/
 .DS_Store
-after/
-before/
-diff/
+
 

@@ -1,0 +1,218 @@
+{
+    "vrfs": {
+        "CORE": {
+            "routeDistinguisher": "64522:4000",
+            "vrfState": "up",
+            "interfaces": [
+                "Ethernet53/1.1",
+                "Ethernet54/1.1",
+                "Vlan4000",
+                "Vlan4001",
+                "Vlan4002",
+                "Vlan4084",
+                "Vlan999"
+            ],
+            "protocols": {
+                "ipv4": {
+                    "routingState": "up",
+                    "protocolState": "up",
+                    "supported": true
+                },
+                "ipv6": {
+                    "routingState": "down",
+                    "protocolState": "up",
+                    "supported": true
+                }
+            }
+        },
+        "EDGE": {
+            "routeDistinguisher": "64522:4010",
+            "vrfState": "up",
+            "interfaces": [
+                "Ethernet53/1.10",
+                "Ethernet54/1.10",
+                "Vlan1000",
+                "Vlan4010",
+                "Vlan4089"
+            ],
+            "protocols": {
+                "ipv4": {
+                    "routingState": "up",
+                    "protocolState": "up",
+                    "supported": true
+                },
+                "ipv6": {
+                    "routingState": "down",
+                    "protocolState": "up",
+                    "supported": true
+                }
+            }
+        },
+        "t10": {
+            "routeDistinguisher": "64522:1000",
+            "vrfState": "up",
+            "interfaces": [
+                "Loopback10",
+                "Vlan10",
+                "Vlan1920",
+                "Vlan2010",
+                "Vlan4083"
+            ],
+            "protocols": {
+                "ipv4": {
+                    "routingState": "up",
+                    "protocolState": "up",
+                    "supported": true
+                },
+                "ipv6": {
+                    "routingState": "down",
+                    "protocolState": "up",
+                    "supported": true
+                }
+            }
+        },
+        "mgmt": {
+            "routeDistinguisher": "42944:1",
+            "vrfState": "up",
+            "interfaces": [
+                "Management1",
+                "Vlan4087"
+            ],
+            "protocols": {
+                "ipv4": {
+                    "routingState": "up",
+                    "protocolState": "up",
+                    "supported": true
+                },
+                "ipv6": {
+                    "routingState": "down",
+                    "protocolState": "up",
+                    "supported": true
+                }
+            }
+        },
+        "t50": {
+            "routeDistinguisher": "64522:1004",
+            "vrfState": "up",
+            "interfaces": [
+                "Vlan1950",
+                "Vlan2050",
+                "Vlan4091",
+                "Vlan50"
+            ],
+            "protocols": {
+                "ipv4": {
+                    "routingState": "up",
+                    "protocolState": "up",
+                    "supported": true
+                },
+                "ipv6": {
+                    "routingState": "down",
+                    "protocolState": "up",
+                    "supported": true
+                }
+            }
+        },
+        "t20": {
+            "routeDistinguisher": "64522:1001",
+            "vrfState": "up",
+            "interfaces": [
+                "Vlan1910",
+                "Vlan20",
+                "Vlan4092"
+            ],
+            "protocols": {
+                "ipv4": {
+                    "routingState": "up",
+                    "protocolState": "up",
+                    "supported": true
+                },
+                "ipv6": {
+                    "routingState": "down",
+                    "protocolState": "up",
+                    "supported": true
+                }
+            }
+        },
+        "t40": {
+            "routeDistinguisher": "64522:1003",
+            "vrfState": "up",
+            "interfaces": [
+                "Vlan1940",
+                "Vlan40",
+                "Vlan4086"
+            ],
+            "protocols": {
+                "ipv4": {
+                    "routingState": "up",
+                    "protocolState": "up",
+                    "supported": true
+                },
+                "ipv6": {
+                    "routingState": "down",
+                    "protocolState": "up",
+                    "supported": true
+                }
+            }
+        },
+        "t60": {
+            "routeDistinguisher": "64522:1005",
+            "vrfState": "up",
+            "interfaces": [
+                "Vlan1960",
+                "Vlan4090",
+                "Vlan60"
+            ],
+            "protocols": {
+                "ipv4": {
+                    "routingState": "up",
+                    "protocolState": "up",
+                    "supported": true
+                },
+                "ipv6": {
+                    "routingState": "down",
+                    "protocolState": "up",
+                    "supported": true
+                }
+            }
+        },
+        "t30": {
+            "routeDistinguisher": "64522:1002",
+            "vrfState": "up",
+            "interfaces": [
+                "Vlan1930",
+                "Vlan30",
+                "Vlan4085"
+            ],
+            "protocols": {
+                "ipv4": {
+                    "routingState": "up",
+                    "protocolState": "up",
+                    "supported": true
+                },
+                "ipv6": {
+                    "routingState": "down",
+                    "protocolState": "up",
+                    "supported": true
+                }
+            }
+        },
+        "T999": {
+            "routeDistinguisher": "999:999",
+            "vrfState": "up",
+            "interfaces": [],
+            "protocols": {
+                "ipv4": {
+                    "routingState": "down",
+                    "protocolState": "up",
+                    "supported": true
+                },
+                "ipv6": {
+                    "routingState": "down",
+                    "protocolState": "up",
+                    "supported": true
+                }
+            }
+        }
+    }
+}

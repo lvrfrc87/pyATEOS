@@ -1,0 +1,80 @@
+{
+    "ipPrefixLists": {
+        "deny-arp-proxy": {
+            "duplicateHandling": "duplicateError",
+            "ipPrefixEntries": [
+                {
+                    "prefix": "10.76.103.14/32",
+                    "le": 0,
+                    "seqno": 10,
+                    "filterType": "deny",
+                    "ge": 0
+                },
+                {
+                    "prefix": "10.76.103.30/32",
+                    "le": 0,
+                    "seqno": 20,
+                    "filterType": "deny",
+                    "ge": 0
+                },
+                {
+                    "prefix": "10.76.103.0/28",
+                    "le": 0,
+                    "seqno": 30,
+                    "filterType": "deny",
+                    "ge": 0
+                },
+                {
+                    "prefix": "10.76.103.16/28",
+                    "le": 0,
+                    "seqno": 40,
+                    "filterType": "deny",
+                    "ge": 0
+                }
+            ]
+        },
+        "t10": {
+            "duplicateHandling": "duplicateError",
+            "ipPrefixEntries": [
+                {
+                    "prefix": "10.76.103.0/24",
+                    "le": 0,
+                    "seqno": 10,
+                    "filterType": "permit",
+                    "ge": 0
+                }
+            ]
+        },
+        "mgmt": {
+            "duplicateHandling": "duplicateError",
+            "ipPrefixEntries": [
+                {
+                    "prefix": "10.76.34.0/23",
+                    "le": 0,
+                    "seqno": 10,
+                    "filterType": "permit",
+                    "ge": 0
+                },
+                {
+                    "prefix": "0.0.0.0/0",
+                    "le": 0,
+                    "seqno": 20,
+                    "filterType": "permit",
+                    "ge": 0
+                }
+            ]
+        },
+        "T666": {
+            "duplicateHandling": "duplicateError",
+            "ipPrefixEntries": [
+                {
+                    "prefix": "8.8.8.8/32",
+                    "le": 0,
+                    "seqno": 10,
+                    "filterType": "permit",
+                    "ge": 0
+                }
+            ]
+        }
+    }
+}

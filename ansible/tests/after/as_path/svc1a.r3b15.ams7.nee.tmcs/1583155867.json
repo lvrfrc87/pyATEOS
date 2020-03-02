@@ -1,0 +1,26 @@
+{
+    "activeIpAsPathLists": {
+        "1": {
+            "ipAsPathEntries": [
+                {
+                    "filterType": "permit",
+                    "origin": "bgpAny",
+                    "userRegex": "^$"
+                }
+            ],
+            "ipAsPathListSource": ""
+        },
+        "999": {
+            "ipAsPathEntries": [
+                {
+                    "filterType": "permit",
+                    "origin": "bgpAny",
+                    "userRegex": "^$"
+                }
+            ],
+            "ipAsPathListSource": ""
+        }
+    },
+    "regexMode": "asn",
+    "inactiveIpAsPathLists": {}
+}

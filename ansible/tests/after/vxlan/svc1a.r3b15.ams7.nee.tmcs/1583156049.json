@@ -1,0 +1,245 @@
+{
+    "interfaces": {
+        "Vxlan1": {
+            "vniInDottedNotation": false,
+            "controllerClientMode": false,
+            "description": "",
+            "portDot1qVniMapping": false,
+            "controllerControlPlane": true,
+            "srcIpIntf": "Loopback250",
+            "hardware": "vxlan",
+            "mcastGrpDecap": "",
+            "bandwidth": 0,
+            "use32BitVni": false,
+            "floodMcastGrp": "0.0.0.0",
+            "vlanToVniMap": {
+                "4092": {
+                    "source": "evpn",
+                    "vni": 2000
+                },
+                "4091": {
+                    "source": "evpn",
+                    "vni": 5000
+                },
+                "4083": {
+                    "source": "evpn",
+                    "vni": 1000
+                },
+                "4084": {
+                    "source": "evpn",
+                    "vni": 40000
+                },
+                "4085": {
+                    "source": "evpn",
+                    "vni": 3000
+                },
+                "4086": {
+                    "source": "evpn",
+                    "vni": 4000
+                },
+                "4087": {
+                    "source": "evpn",
+                    "vni": 42944
+                },
+                "4000": {
+                    "source": "",
+                    "vni": 400
+                },
+                "4089": {
+                    "source": "evpn",
+                    "vni": 40100
+                },
+                "4002": {
+                    "source": "",
+                    "vni": 402
+                },
+                "30": {
+                    "source": "",
+                    "vni": 30
+                },
+                "50": {
+                    "source": "",
+                    "vni": 50
+                },
+                "40": {
+                    "source": "",
+                    "vni": 40
+                },
+                "60": {
+                    "source": "",
+                    "vni": 60
+                },
+                "4090": {
+                    "source": "evpn",
+                    "vni": 6000
+                },
+                "4001": {
+                    "source": "",
+                    "vni": 401
+                },
+                "20": {
+                    "source": "",
+                    "vni": 20
+                },
+                "4010": {
+                    "source": "",
+                    "vni": 410
+                }
+            },
+            "vlanToVtepList": {
+                "60": {
+                    "remoteVtepAddr": [
+                        "10.76.96.67",
+                        "10.76.96.69"
+                    ]
+                },
+                "30": {
+                    "remoteVtepAddr": [
+                        "10.76.96.67",
+                        "10.76.96.69"
+                    ]
+                },
+                "20": {
+                    "remoteVtepAddr": [
+                        "10.76.96.67",
+                        "10.76.96.69"
+                    ]
+                },
+                "4000": {
+                    "remoteVtepAddr": [
+                        "10.76.96.67",
+                        "10.76.96.69"
+                    ]
+                },
+                "4001": {
+                    "remoteVtepAddr": [
+                        "10.76.96.67",
+                        "10.76.96.69"
+                    ]
+                },
+                "4002": {
+                    "remoteVtepAddr": [
+                        "10.76.96.67",
+                        "10.76.96.69"
+                    ]
+                },
+                "4010": {
+                    "remoteVtepAddr": [
+                        "10.76.96.67",
+                        "10.76.96.69"
+                    ]
+                },
+                "50": {
+                    "remoteVtepAddr": [
+                        "10.76.96.67",
+                        "10.76.96.69"
+                    ]
+                },
+                "40": {
+                    "remoteVtepAddr": [
+                        "10.76.96.67",
+                        "10.76.96.69"
+                    ]
+                }
+            },
+            "arpReplyRelayMode": false,
+            "srcIpAddr": "10.76.96.65",
+            "dataPathLearningMode": false,
+            "interfaceAddress": [],
+            "mlagSharedRouterMacAddr": "9a:5d:82:96:52:51",
+            "staticFloodlists": false,
+            "name": "Vxlan1",
+            "replicationMode": "headendVcs",
+            "mtu": 0,
+            "interfaceStatus": "connected",
+            "vrfToVniMap": {
+                "CORE": 40000,
+                "EDGE": 40100,
+                "t10": 1000,
+                "mgmt": 42944,
+                "t50": 5000,
+                "t20": 2000,
+                "t40": 4000,
+                "t60": 6000,
+                "t30": 3000
+            },
+            "arpLocalAddress": false,
+            "vlanToLearnRestrict": {
+                "4092": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4091": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4083": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4084": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4085": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4086": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4087": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4000": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4089": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4002": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4010": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "50": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "40": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "60": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4090": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "4001": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "20": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                },
+                "30": {
+                    "prefixList": [],
+                    "learnFrom": "learnFromAny"
+                }
+            },
+            "lineProtocolStatus": "up",
+            "forwardingModel": "bridged"
+        }
+    }
+}

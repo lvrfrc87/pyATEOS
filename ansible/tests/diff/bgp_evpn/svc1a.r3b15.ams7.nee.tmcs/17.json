@@ -1,0 +1,2552 @@
+{
+    "evpnRoutes": {
+        "RD: 64523:4000 ip-prefix 10.76.101.0/29": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1000 imet 10.76.96.69": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1005 imet 10.76.96.67": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1002 imet 10.76.96.67": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 42944:4 ip-prefix 10.76.34.0/23": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:4001 imet 10.76.96.69": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:4000 ip-prefix 10.76.101.16/29": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1005 imet 10.76.96.69": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1003 ip-prefix 10.76.103.64/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1000 mac-ip 5cb9.019c.e740 10.76.103.14": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1111 mac-ip 5cb9.019c.e740 10.76.103.14": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1002 imet 10.76.96.69": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:4002 imet 10.76.96.67": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:4000 imet 10.76.96.67": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1000 ip-prefix 10.76.103.0/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1004 mac-ip 5cb9.019c.e6f9": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1000 imet 10.76.96.67": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1003 ip-prefix 10.76.103.55/32": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1002 ip-prefix 10.76.103.32/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1111 ip-prefix 10.76.103.0/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1004 mac-ip 5cb9.019c.e6f9 10.76.103.94": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1001 imet 10.76.96.67": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1003 imet 10.76.96.69": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:4000 ip-prefix 10.76.102.80/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1000 ip-prefix 10.76.103.0/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1003 ip-prefix 10.76.103.64/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1003 imet 10.76.96.67": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1000 mac-ip 5cb9.019c.e740": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1111 mac-ip 5cb9.019c.e740": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:4010 ip-prefix 77.75.142.0/29": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:4002 imet 10.76.96.69": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:4010 imet 10.76.96.67": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:4000 ip-prefix 10.76.102.80/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1002 ip-prefix 10.76.103.32/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1001 ip-prefix 10.76.103.16/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:4000 ip-prefix 10.76.96.199/32": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1005 ip-prefix 10.76.103.96/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1002 ip-prefix 10.76.103.54/32": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:4000 imet 10.76.96.69": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1004 imet 10.76.96.69": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1001 imet 10.76.96.69": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:4000 ip-prefix 10.76.101.16/29": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:4001 imet 10.76.96.67": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1004 imet 10.76.96.67": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1111 imet 10.76.96.67": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1004 ip-prefix 10.76.103.80/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1005 ip-prefix 10.76.103.96/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:4010 imet 10.76.96.69": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:4000 ip-prefix 10.76.101.0/29": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64524:1004 ip-prefix 10.76.103.80/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64524",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.69",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:4010 ip-prefix 77.75.142.0/29": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        },
+        "RD: 64523:1001 ip-prefix 10.76.103.16/28": {
+            "totalPaths": [
+                2,
+                1
+            ],
+            "evpnRoutePaths": {
+                "0:": {
+                    "routeType": {
+                        "ecmpContributor": [
+                            true,
+                            false
+                        ],
+                        "ecmpHead": [
+                            true,
+                            false
+                        ]
+                    }
+                },
+                "delete": [
+                    [
+                        1,
+                        {
+                            "asPathEntry": {
+                                "asPath": "64521 64523",
+                                "asPathType": "External"
+                            },
+                            "localPreference": 100,
+                            "weight": 0,
+                            "nextHop": "10.76.96.67",
+                            "routeType": {
+                                "atomicAggregator": false,
+                                "origin": "Igp",
+                                "localAgg": false,
+                                "waitForConvergence": false,
+                                "suppressed": false,
+                                "queued": false,
+                                "valid": true,
+                                "ecmpContributor": true,
+                                "active": false,
+                                "stale": false,
+                                "ecmp": true,
+                                "backup": false,
+                                "ecmpHead": false
+                            }
+                        }
+                    ]
+                ]
+            }
+        }
+    }
+}

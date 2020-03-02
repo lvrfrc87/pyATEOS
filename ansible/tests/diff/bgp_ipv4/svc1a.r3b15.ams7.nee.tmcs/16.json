@@ -1,0 +1,1168 @@
+{
+    "vrfs": {
+        "default": {
+            "bgpRouteEntries": {
+                "10.76.96.6/32": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64523 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.8/32": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64524 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.69/32": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64524 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.20/31": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "delete": [
+                            [
+                                2,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64523 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": false,
+                                        "luRoute": false,
+                                        "active": false,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": false
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.2/31": {
+                    "totalPaths": [
+                        2,
+                        1
+                    ],
+                    "bgpRoutePaths": {
+                        "delete": [
+                            [
+                                1,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": false,
+                                        "luRoute": false,
+                                        "active": false,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": false
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.167/32": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64523 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.42/31": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64523 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.168/32": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64523 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.44/31": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64524 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.24/31": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "delete": [
+                            [
+                                2,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64524 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": false,
+                                        "luRoute": false,
+                                        "active": false,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": false
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.6/31": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "active": [
+                                    false,
+                                    true
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": false,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": false
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.170/32": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64524 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.8/31": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "active": [
+                                    false,
+                                    true
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": false,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": false
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "172.168.10.0/30": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64523 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.0/31": {
+                    "totalPaths": [
+                        2,
+                        1
+                    ],
+                    "bgpRoutePaths": {
+                        "delete": [
+                            [
+                                1,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": false,
+                                        "luRoute": false,
+                                        "active": false,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": false
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.5/32": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64523 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.7/32": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64524 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.67/32": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64523 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.169/32": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "ecmpContributor": [
+                                    true,
+                                    false
+                                ],
+                                "active": [
+                                    false,
+                                    true
+                                ],
+                                "ecmp": [
+                                    true,
+                                    false
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64524 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": true,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": true
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.96.1/32": {
+                    "totalPaths": [
+                        2,
+                        1
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "active": [
+                                    false,
+                                    true
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": false,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": false
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.22/31": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "delete": [
+                            [
+                                2,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64523 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": false,
+                                        "luRoute": false,
+                                        "active": false,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": false
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.10/31": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "active": [
+                                    false,
+                                    true
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": false,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": false
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.4/31": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "0:": {
+                            "routeType": {
+                                "active": [
+                                    false,
+                                    true
+                                ]
+                            }
+                        },
+                        "delete": [
+                            [
+                                0,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": false,
+                                        "luRoute": false,
+                                        "active": true,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": false
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                },
+                "10.76.100.26/31": {
+                    "totalPaths": [
+                        3,
+                        2
+                    ],
+                    "bgpRoutePaths": {
+                        "delete": [
+                            [
+                                2,
+                                {
+                                    "asPathEntry": {
+                                        "asPath": "64520 64524 i",
+                                        "asPathType": "External"
+                                    },
+                                    "localPreference": 100,
+                                    "weight": 0,
+                                    "reasonNotBestpath": "noReason",
+                                    "nextHop": "10.76.100.0",
+                                    "routeType": {
+                                        "atomicAggregator": false,
+                                        "origin": "Igp",
+                                        "suppressed": false,
+                                        "sixPeRoute": false,
+                                        "queued": false,
+                                        "valid": true,
+                                        "ecmpContributor": false,
+                                        "luRoute": false,
+                                        "active": false,
+                                        "stale": false,
+                                        "ecmp": false,
+                                        "backup": false,
+                                        "ecmpHead": false
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

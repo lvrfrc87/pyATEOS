@@ -1,0 +1,14 @@
+{
+    "delete": [
+        [
+            1,
+            {
+                "ttl": 120,
+                "neighborDevice": "s2a.r4b15.ams7.nee.tmcs",
+                "neighborPort": "Ethernet45/1",
+                "port": "Ethernet50/1"
+            }
+        ]
+    ],
+    "insert": null
+}

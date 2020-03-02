@@ -1,0 +1,23 @@
+{
+    "dynamicEntries": [
+        4,
+        3
+    ],
+    "ipV4Neighbors": {
+        "delete": [
+            [
+                1,
+                {
+                    "hwAddress": "985d.8222.aef9",
+                    "address": "10.76.100.36",
+                    "interface": "Ethernet50/1",
+                    "age": 0
+                }
+            ]
+        ]
+    },
+    "totalEntries": [
+        4,
+        3
+    ]
+}

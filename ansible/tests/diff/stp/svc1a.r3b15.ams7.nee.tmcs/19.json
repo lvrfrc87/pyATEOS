@@ -1,0 +1,21 @@
+{
+    "topologies": {
+        "NoStp": {
+            "interfaces": {
+                "delete": {
+                    "Ethernet50/1": {
+                        "state": "forwarding"
+                    }
+                }
+            },
+            "vlans": {
+                "delete": [
+                    [
+                        1,
+                        1007
+                    ]
+                ]
+            }
+        }
+    }
+}

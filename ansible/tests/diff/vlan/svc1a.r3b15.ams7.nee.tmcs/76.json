@@ -1,0 +1,30 @@
+{
+    "delete": null,
+    "insert": {
+        "999": {
+            "status": "active",
+            "name": "VLAN0999",
+            "interfaces": {
+                "Port-Channel41": {
+                    "privatePromoted": false
+                },
+                "Port-Channel52": {
+                    "privatePromoted": false
+                },
+                "Port-Channel51": {
+                    "privatePromoted": false
+                },
+                "Port-Channel1000": {
+                    "privatePromoted": false
+                },
+                "Cpu": {
+                    "privatePromoted": false
+                },
+                "Port-Channel42": {
+                    "privatePromoted": false
+                }
+            },
+            "dynamic": false
+        }
+    }
+}
