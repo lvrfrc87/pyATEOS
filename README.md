@@ -401,7 +401,7 @@ vxlan:          show interfaces vxlan 1
 ```
 
 ### ANSIBLE PYATEOS
-Good news for Ansible folks, pyATEOS is supported by Ansible. `eos_pyateos` module is available. You can add under your [collection](https://galaxy.ansible.com/docs/contributing/creating_collections.html) or under `ansible/modules/network/eos/eos_pyateos.py`. 
+Good news for Ansible folks, pyATEOS is supported by Ansible. `eos_pyateos` module is available. You can add under your [collection](https://galaxy.ansible.com/docs/contributing/creating_collections.html) or under `ansible/modules/network/eos/eos_pyateos.py`. Examples, test results and modules available under `ansible/`.
 
 Here and example of Ansible playbook using `eos_pyateos`:
 

@@ -43,9 +43,7 @@ options:
             'stp',
             'vlan',
             'vrf',
-            'vxlan'
-        ]
-        required: true
+            'vxlan']
         type: list
     before:
         description:
@@ -230,7 +228,6 @@ class Test():
         result = run_commands(self.module, [cmd])
 
         return result[0]
-    
 
 
 def run_test(module, test):
@@ -263,7 +260,7 @@ def run_test(module, test):
         'as_path': 'show ip as-path access-list',
         'bgp_evpn': 'show bgp evpn',
         'bgp_ipv4': 'show bgp ipv4 unicast',
-        'interfaces': 'show interfaces',
+        'interface': 'show interfaces',
         'ip_route': 'show ip route detail',
         'mac': 'show mac address-table',
         'lldp': 'show lldp neighbors',
@@ -287,6 +284,58 @@ def run_test(module, test):
 
 def run_compare(module, count, test):
 
+    class CustomFilter():
+        def filter_jmespath(self, test, legal_json_diff):
+            plugins_filter = {
+                'ntp': 'peers.{delete: delete, insert: insert}',
+                'vlan': 'vlans.{delete: delete, insert: insert}',
+                'as_path': 'activeIpAsPathLists.{delete: delete, insert: insert}',
+                'lldp': 'lldpNeighbors.{delete: delete, insert: insert}'
+            }
+            
+            if plugins_filter.get(test):
+                final_diff = search(plugins_filter.get(test), legal_json_diff)
+            elif test == 'interface':
+                final_diff = CustomFilter().filter_iface_counters(legal_json_diff)
+            elif test == 'acl':
+                final_diff = CustomFilter().filter_acls_counters(legal_json_diff)
+            else:
+                final_diff = legal_json_diff
+            
+            return final_diff
+
+        def filter_iface_counters(self, legal_json_diff):          
+            return_dict = {'interfaces': {}}
+
+            for ifaces in legal_json_diff.values():
+                for iface_name, iface_values in ifaces.items():
+
+                    if iface_values.get('interfaceStatus'):
+                        return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]['interfaceStatus']
+                
+                    if iface_values.get('memberInterfaces'):
+                        if iface_values['memberInterfaces'].get('delete') or iface_values['memberInterfaces'].get('insert'):
+                            return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]['memberInterfaces']
+                    
+                    if iface_name == 'insert' or iface_name == 'delete':
+                        return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]
+
+            return return_dict
+
+
+        def filter_acls_counters(self, legal_json_diff):          
+            return_dict = {'aclList': {}}
+
+            for acls in legal_json_diff.values():
+                for acl_number, sequences in acls.items():
+                    for seq_number in sequences.values():
+                        for values in seq_number.values():
+                            if values.get('ruleFilter'):
+                                return_dict['aclList'][acl_number] = {'sequence': {}}
+                                return_dict['aclList'][acl_number]['sequence'] = seq_number
+
+                                return return_dict
+
     def replace(string, test):
         substitutions = {
             '\'':'\"',
@@ -299,7 +348,6 @@ def run_compare(module, count, test):
         }
 
         skip_list = [
-            'bgp_evpn',
             'vrf',
         ]
 
@@ -308,46 +356,11 @@ def run_compare(module, count, test):
         sub_applied = regex.sub(lambda match: substitutions[match.group(0)], string)
         
         if test not in skip_list:
-            for integer in re.findall(r'\d+:', sub_applied):
-                sub_applied = sub_applied.replace(integer, f'"{integer[:-1]}":')
+            for integer in re.findall(r'\d+:\s', sub_applied):
+                sub_applied = sub_applied.replace(integer, f'"{integer[:-1]}": ')
 
         return sub_applied
 
-
-    def diff_filter(test, legal_json_diff):
-        plugins_filter = {
-            'ntp': 'peers.{delete: delete, insert: insert}',
-            'vlan': 'vlans.{delete: delete, insert: insert}',
-            'as_path': 'activeIpAsPathLists.{delete: delete, insert: insert}',
-        }
-        
-        if plugins_filter.get(test):
-            final_diff = search(plugins_filter.get(test), legal_json_diff)
-        elif test == 'interface':
-            final_diff = filter_iface_counters(legal_json_diff)
-        else:
-            final_diff = legal_json_diff
-        
-        return final_diff
-
-
-    def filter_iface_counters(legal_json_diff):          
-        return_dict = {'interfaces': {}}
-
-        for ifaces in legal_json_diff.values():
-            for iface_name, iface_values in ifaces.items():
-
-                if iface_values.get('interfaceStatus'):
-                    return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]['interfaceStatus']
-            
-                if iface_values.get('memberInterfaces'):
-                    if iface_values['memberInterfaces'].get('delete') or iface_values['memberInterfaces'].get('insert'):
-                        return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]['memberInterfaces']
-                
-                if iface_name == 'insert' or iface_name == 'delete':
-                    return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]
-
-        return return_dict
 
     before_file = module.params.get('files')[0]
     after_file = module.params.get('files')[1]
@@ -389,7 +402,7 @@ def run_compare(module, count, test):
             final_diff = json.loads(legal_json_diff)
         
         if filter_flag:
-            final_diff = diff_filter(test, json.loads(legal_json_diff))
+            final_diff = CustomFilter().filter_jmespath(test, json.loads(legal_json_diff))
 
         diff_file_id = str((int(before_file[count]) - int(after_file[count])) * -1)
 
@@ -399,12 +412,13 @@ def run_compare(module, count, test):
             ),'w', encoding='utf-8') as file:
             json.dump(final_diff, file, ensure_ascii=False, indent=4)
 
-        return legal_json_diff
+    return final_diff
+
 
 def main():
 
     argument_spec = dict(
-        test=dict(required=True, type='list', choices=[
+        test=dict(type='list', choices=[
                 'acl',
                 'arp',
                 'as_path',
@@ -422,8 +436,8 @@ def main():
                 'stp',
                 'vlan',
                 'vrf',
-                'vxlan',]
-                ),
+                'vxlan',
+                ]),
         before=dict(type='bool', default=False),
         after=dict(type='bool', default=False),
         compare=dict(type='bool', default=False),
@@ -433,7 +447,7 @@ def main():
             'mgmt',
             'routing',
             'layer2',
-            'ctr',
+            'ctrl',
             'all'
         ]),
         hostname=dict(required=True),
@@ -443,23 +457,29 @@ def main():
     
     mutually_exclusive = [('before', 'after', 'compare')]
     required_if = [('compare', True, ['files'])]
+    required_one_of = [('test', 'group'),('before', 'after', 'compare')]
     
     module = AnsibleModule(argument_spec=argument_spec,
                            mutually_exclusive=mutually_exclusive,
-                           required_if=required_if)
+                           required_if=required_if,
+                           required_one_of=required_one_of
+                           )
 
-    
     if not HAS_JSONDIFF:
         return module.fail_json(msg="jsondiff is not installed, try 'pip install jsondiff'")
 
     if not HAS_JMESPATH:
         return module.fail_json(msg="jmespath is not installed, try 'pip install jmespath'")
-       
-    result = {'changed': False}
 
     list_ids = list()
     group = module.params.get('group')
-    test_run = module.params.get('test')
+   
+    if module.params.get('test'):
+        test_run = module.params.get('test')
+    
+    if not module.params.get('test'):
+        test_run = list()
+
 
     test_all = [
         'acl',
@@ -482,20 +502,23 @@ def main():
         'vxlan',
     ]
 
-    if 'mgmt' in group:
-        test_run.extend(('ntp', 'snmp'))
+    if group:
+        if 'mgmt' in group:
+            test_run.extend(('ntp', 'snmp'))
 
-    if 'routing' in group:
-        test_run.extend(('bgp_evpn', 'bgp_ipv4', 'ip_route'))
-    
-    if 'layer2' in group:
-        test_run.extend(('stp', 'vlan', 'vxlan', 'lldp', 'arp', 'mac'))
-    
-    if 'ctrl' in group:
-        test_run.extend(('acl', 'as_path', 'prefix_list', 'route_map'))
-    
-    if 'all' in group:
-        test_run = test_all
+        if 'routing' in group:
+            test_run.extend(('bgp_evpn', 'bgp_ipv4', 'ip_route'))
+        
+        if 'layer2' in group:
+            test_run.extend(('stp', 'vlan', 'vxlan', 'lldp', 'arp', 'mac'))
+        
+        if 'ctrl' in group:
+            test_run.extend(('acl', 'as_path', 'prefix_list', 'route_map'))
+        
+        if 'all' in group:
+            test_run = test_all
+
+    result = {'changed': False}
 
     for count, test in enumerate(sorted(set(test_run))):
         
@@ -517,5 +540,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-#f20200301
+
+#f20200302 v0.1.6

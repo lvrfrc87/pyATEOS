@@ -1,0 +1,57 @@
+---
+- name: run BEFORE tests.
+  eos_pyateos:
+    before: true
+    test: 
+      - ip_route
+      - bgp_ipv4
+      - bgp_evpn
+    hostname: "{{ inventory_hostname }}"
+  register: result
+
+- name: save BEFORE file IDs.
+  delegate_to: 127.0.0.1
+  set_fact:
+    before_ids: "{{ result.before_file_ids }}"
+
+- name: change BGPs config.
+  eos_config:
+    lines:
+      - neighbor 10.76.96.2 shutdown
+      - neighbor 10.76.100.0 shutdown
+    parents: router bgp 64522
+
+- name: run AFTER tests.
+  eos_pyateos:
+    after: true
+    test: 
+      - ip_route
+      - bgp_ipv4
+      - bgp_evpn
+    hostname: "{{ inventory_hostname }}"
+  register: result
+
+- name: save AFTER file IDs.
+  delegate_to: 127.0.0.1
+  set_fact:
+    after_ids: "{{ result.after_file_ids }}"
+
+- name: restore BGPs config.
+  eos_config:
+    lines:
+      - no neighbor 10.76.96.2 shutdown
+      - no neighbor 10.76.100.0 shutdown
+    parents: router bgp 64522
+
+- name: run DIFF result.
+  eos_pyateos:
+    compare: true
+    test: 
+      - ip_route
+      - bgp_ipv4
+      - bgp_evpn
+    hostname: "{{ inventory_hostname }}"
+    filter: true
+    files: 
+      - "{{ before_ids }}"
+      - "{{ after_ids }}"

@@ -1,0 +1,44 @@
+---
+- name: Playbooks for Arista pre and post operational tests.
+  hosts: svc1a.r3b15.ams7.nee.tmcs
+  connection: network_cli
+  gather_facts: false
+
+  tasks:
+  - name: Test block 
+    block:
+      - name: NTP
+        include: ntp.yaml
+
+      - name: SNMP
+        include: snmp.yaml
+      
+      - name: CTRL group
+        include: ctrl.yaml
+
+      - name: MAC group
+        include: mac.yaml
+
+      - name: IFACE ARP LLDP STP
+        include: iface_arp_lldp_stp.yaml
+
+      - name: VLAN VXLAN VRF
+        include: vlan_vxlan_vrf.yaml
+
+      - name: BGP_IPV4, BGP_EVPN, IP_ROUTE
+        include: bgps_routes.yaml
+
+    always:
+      - name: find backups and renders files older than 10 minutes.
+        find:
+          paths: ./tests
+          age: 10m
+          file_type: file
+          recurse: yes
+        register: find_result
+
+      - name: delete backups and renders files older than 5 minutes.
+        file:
+          path:  "{{ item.path }}"
+          state: absent
+        loop: "{{ find_result.files }}"

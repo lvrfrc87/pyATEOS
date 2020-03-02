@@ -1,0 +1,49 @@
+---
+- name: run BEFORE tests.
+  eos_pyateos:
+    before: true
+    test: 
+      - snmp
+    hostname: "{{ inventory_hostname }}"
+  register: result
+
+- name: save BEFORE file IDs.
+  delegate_to: 127.0.0.1
+  set_fact:
+    before_ids: "{{ result.before_file_ids }}"
+
+- name: change SNMP config.
+  eos_config:
+    lines:
+      - no snmp-server host 29.0.5.27 vrf mgmt version 2c fluffytail
+      - snmp-server host 8.8.8.8 vrf mgmt version 2c fluffytail
+
+- name: run AFTER tests.
+  eos_pyateos:
+    after: true
+    test: 
+      - snmp
+    hostname: "{{ inventory_hostname }}"
+  register: result
+
+- name: save AFTER file IDs.
+  delegate_to: 127.0.0.1
+  set_fact:
+    after_ids: "{{ result.after_file_ids }}"
+
+- name: restore SNMP config.
+  eos_config:
+    lines:
+      - snmp-server host 29.0.5.27 vrf mgmt version 2c fluffytail
+      - no snmp-server host 8.8.8.8 vrf mgmt version 2c fluffytail
+  
+- name: run DIFF result.
+  eos_pyateos:
+    compare: true
+    test:
+      - snmp
+    hostname: "{{ inventory_hostname }}"
+    filter: true
+    files: 
+      - "{{ before_ids }}"
+      - "{{ after_ids }}"

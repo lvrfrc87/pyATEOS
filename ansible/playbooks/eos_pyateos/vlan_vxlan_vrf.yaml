@@ -1,0 +1,89 @@
+---
+- name: run BEFORE tests.
+  eos_pyateos:
+    before: true
+    test: 
+      - vlan
+      - vxlan
+      - vrf
+    hostname: "{{ inventory_hostname }}"
+  register: result
+
+- name: create VLAN.
+  eos_config:
+    lines:
+      - vlan 666
+
+- name: create VRF.
+  eos_config:
+    lines:
+      - rd 666:666
+    parents: vrf definition T666
+
+- name: save BEFORE file IDs.
+  delegate_to: 127.0.0.1
+  set_fact:
+    before_ids: "{{ result.before_file_ids }}"
+
+- name: change VLAN.
+  eos_config:
+    lines:
+      - no vlan 666
+      - vlan 999
+
+- name: change VRF.
+  eos_config:
+    lines:
+      - rd 999:999
+    parents: vrf definition T999
+
+- name: change VRF.
+  eos_config:
+    lines:
+      - no vrf definition T666
+
+- name: change VXLAN.
+  eos_config:
+    lines:
+      - no vxlan vlan 10 vni 10
+    parents: interface Vxlan1
+
+- name: run AFTER tests.
+  eos_pyateos:
+    after: true
+    test: 
+      - vlan
+      - vxlan
+      - vrf
+    hostname: "{{ inventory_hostname }}"
+  register: result
+
+- name: save AFTER file IDs.
+  delegate_to: 127.0.0.1
+  set_fact:
+    after_ids: "{{ result.after_file_ids }}"
+
+- name: restore VXLAN.
+  eos_config:
+    lines:
+      - vxlan vlan 10 vni 10
+    parents: interface Vxlan1
+
+- name: restore VLAN, VRF.
+  eos_config:
+    lines:
+      - no vrf definition T999
+      - no vlan 999
+  
+- name: run DIFF result.
+  eos_pyateos:
+    compare: true
+    test:
+      - vlan
+      - vxlan
+      - vrf
+    hostname: "{{ inventory_hostname }}"
+    filter: true
+    files: 
+      - "{{ before_ids }}"
+      - "{{ after_ids }}"
