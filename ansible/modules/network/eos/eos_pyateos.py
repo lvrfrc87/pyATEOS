@@ -14,16 +14,16 @@ version_added: "2.10"
 author:
   - "Federico Olivieri (@Federico87)"
 
-short_description: Operational status tests on Arista device. 
-description: A snapshot of the operational status of a switch is taken before a 
-    config or network change and compare against a second snapshot taken after the change. 
+short_description: Operational status tests on Arista device.
+description: A snapshot of the operational status of a switch is taken before a
+    config or network change and compare against a second snapshot taken after the change.
     A diff file is generated in .json format.
 extends_documentation_fragment: eos
 options:
     test:
         description:
         - One ore more test to be run. Every test correspond to a specific "show" command
-        i.e. ntp - show ntp associations. 
+        i.e. ntp - show ntp associations.
         For more details: https://gitlab.com/networkAutomation/pyateos/-/blob/master/README.md
         choices: [
             'acl',
@@ -70,7 +70,7 @@ options:
         type: list
     filter:
         description:
-            - Valid only with `compare`. Filter reduces the output returning just the 
+            - Valid only with `compare`. Filter reduces the output returning just the
             `insert` and `delete` in diff i.e. intrface - all interfaces counters are filtered.
         type: bool
         default: false
@@ -86,7 +86,7 @@ options:
         'ctr',
         'all'
         ]
-    hostname: 
+    hostname:
         description:
             - Device hostname required for filesystem build
         type: str
@@ -103,7 +103,7 @@ EXAMPLES = """
     before: true
     test:
       - acl
-    group: 
+    group:
       - mgmt
       - layer2
     hostname: "{{ inventory_hostname }}"
@@ -125,7 +125,7 @@ EXAMPLES = """
     after: true
     test:
       - acl
-    group: 
+    group:
       - mgmt
       - layer2
     hostname: "{{ inventory_hostname }}"
@@ -145,7 +145,7 @@ EXAMPLES = """
     test: "{{ tests }}"
     hostname: "{{ inventory_hostname }}"
     filter: true
-    files: 
+    files:
       - "{{ before_ids }}"
       - "{{ after_ids }}"
 """
@@ -222,7 +222,7 @@ class Test():
 
     def show(self, sh_cmd):
         cmd = {
-            'command': sh_cmd, 
+            'command': sh_cmd,
             'output': 'json'}
 
         result = run_commands(self.module, [cmd])
@@ -276,9 +276,9 @@ def run_test(module, test):
     if test:
         result = Test(module).show(cmds.get(test))
 
-    with open('{0}/{1}.json'.format(destination,file_name), 'w', encoding='utf-8') as file:
+    with open('{0}/{1}.json'.format(destination, file_name), 'w', encoding='utf-8') as file:
         json.dump(result, file, ensure_ascii=False, indent=4)
-    
+
     return result, file_name
 
 
@@ -292,7 +292,7 @@ def run_compare(module, count, test):
                 'as_path': 'activeIpAsPathLists.{delete: delete, insert: insert}',
                 'lldp': 'lldpNeighbors.{delete: delete, insert: insert}'
             }
-            
+
             if plugins_filter.get(test):
                 final_diff = search(plugins_filter.get(test), legal_json_diff)
             elif test == 'interface':
@@ -301,10 +301,10 @@ def run_compare(module, count, test):
                 final_diff = CustomFilter().filter_acls_counters(legal_json_diff)
             else:
                 final_diff = legal_json_diff
-            
+
             return final_diff
 
-        def filter_iface_counters(self, legal_json_diff):          
+        def filter_iface_counters(self, legal_json_diff):
             return_dict = {'interfaces': {}}
 
             for ifaces in legal_json_diff.values():
@@ -312,18 +312,17 @@ def run_compare(module, count, test):
 
                     if iface_values.get('interfaceStatus'):
                         return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]['interfaceStatus']
-                
+
                     if iface_values.get('memberInterfaces'):
                         if iface_values['memberInterfaces'].get('delete') or iface_values['memberInterfaces'].get('insert'):
                             return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]['memberInterfaces']
-                    
+
                     if iface_name == 'insert' or iface_name == 'delete':
                         return_dict['interfaces'][iface_name] = legal_json_diff['interfaces'][iface_name]
 
             return return_dict
 
-
-        def filter_acls_counters(self, legal_json_diff):          
+        def filter_acls_counters(self, legal_json_diff):
             return_dict = {'aclList': {}}
 
             for acls in legal_json_diff.values():
@@ -338,13 +337,13 @@ def run_compare(module, count, test):
 
     def replace(string, test):
         substitutions = {
-            '\'':'\"',
-            'insert':'"insert"',
-            'delete':'"delete"',
-            'True':'true',
-            'False':'false',
-            '(':'[',
-            ')':']',
+            '\'': '\"',
+            'insert': '"insert"',
+            'delete': '"delete"',
+            'True': 'true',
+            'False': 'false',
+            '(': '[',
+            ')': ']',
         }
 
         skip_list = [
@@ -354,13 +353,12 @@ def run_compare(module, count, test):
         substrings = sorted(substitutions, key=len, reverse=True)
         regex = re.compile('|'.join(map(re.escape, substrings)))
         sub_applied = regex.sub(lambda match: substitutions[match.group(0)], string)
-        
+
         if test not in skip_list:
             for integer in re.findall(r'\d+:\s', sub_applied):
                 sub_applied = sub_applied.replace(integer, f'"{integer[:-1]}": ')
 
         return sub_applied
-
 
     before_file = module.params.get('files')[0]
     after_file = module.params.get('files')[1]
@@ -388,19 +386,19 @@ def run_compare(module, count, test):
             return error
 
         destination = './tests/diff/{test}/{host}/'.format(
-                test=test,
-                host=host,
-            )
-            
+            test=test,
+            host=host,
+        )
+
         if not os.path.exists(destination):
             os.makedirs(destination)
 
         json_diff = str(diff(before, after, load=True, syntax='symmetric'))
         legal_json_diff = replace(json_diff, test)
-        
+
         if not filter_flag:
             final_diff = json.loads(legal_json_diff)
-        
+
         if filter_flag:
             final_diff = CustomFilter().filter_jmespath(test, json.loads(legal_json_diff))
 
@@ -408,8 +406,8 @@ def run_compare(module, count, test):
 
         with open('{destination}{diff_file_id}.json'.format(
             destination=destination,
-            diff_file_id=diff_file_id
-            ),'w', encoding='utf-8') as file:
+            diff_file_id=diff_file_id,
+        ), 'w', encoding='utf-8') as file:
             json.dump(final_diff, file, ensure_ascii=False, indent=4)
 
     return final_diff
@@ -419,25 +417,25 @@ def main():
 
     argument_spec = dict(
         test=dict(type='list', choices=[
-                'acl',
-                'arp',
-                'as_path',
-                'bgp_evpn',
-                'bgp_ipv4',
-                'interface',
-                'ip_route',
-                'mac',
-                'mlag',
-                'ntp',
-                'lldp',
-                'prefix_list',
-                'route_map',
-                'snmp',
-                'stp',
-                'vlan',
-                'vrf',
-                'vxlan',
-                ]),
+            'acl',
+            'arp',
+            'as_path',
+            'bgp_evpn',
+            'bgp_ipv4',
+            'interface',
+            'ip_route',
+            'mac',
+            'mlag',
+            'ntp',
+            'lldp',
+            'prefix_list',
+            'route_map',
+            'snmp',
+            'stp',
+            'vlan',
+            'vrf',
+            'vxlan',
+        ]),
         before=dict(type='bool', default=False),
         after=dict(type='bool', default=False),
         compare=dict(type='bool', default=False),
@@ -448,17 +446,17 @@ def main():
             'routing',
             'layer2',
             'ctrl',
-            'all'
+            'all',
         ]),
         hostname=dict(required=True),
-        )
+    )
 
     argument_spec.update(eos_argument_spec)
-    
+
     mutually_exclusive = [('before', 'after', 'compare')]
     required_if = [('compare', True, ['files'])]
-    required_one_of = [('test', 'group'),('before', 'after', 'compare')]
-    
+    required_one_of = [('test', 'group'), ('before', 'after', 'compare')]
+
     module = AnsibleModule(argument_spec=argument_spec,
                            mutually_exclusive=mutually_exclusive,
                            required_if=required_if,
@@ -473,13 +471,12 @@ def main():
 
     list_ids = list()
     group = module.params.get('group')
-   
+
     if module.params.get('test'):
         test_run = module.params.get('test')
-    
+
     if not module.params.get('test'):
         test_run = list()
-
 
     test_all = [
         'acl',
@@ -508,20 +505,20 @@ def main():
 
         if 'routing' in group:
             test_run.extend(('bgp_evpn', 'bgp_ipv4', 'ip_route'))
-        
+
         if 'layer2' in group:
             test_run.extend(('stp', 'vlan', 'vxlan', 'lldp', 'arp', 'mac'))
-        
+
         if 'ctrl' in group:
             test_run.extend(('acl', 'as_path', 'prefix_list', 'route_map'))
-        
+
         if 'all' in group:
             test_run = test_all
 
     result = {'changed': False}
 
     for count, test in enumerate(sorted(set(test_run))):
-        
+
         if module.params['before']:
             result[test], file_id = run_test(module, test)
             list_ids.append(file_id)
@@ -531,7 +528,7 @@ def main():
             result[test], file_id = run_test(module, test)
             list_ids.append(file_id)
             result['after_file_ids'] = list_ids
- 
+
         if module.params['compare']:
             result['compare'] = run_compare(module, count, test)
 
@@ -540,5 +537,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-#f20200302 v0.1.6
