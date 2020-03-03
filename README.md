@@ -1,12 +1,9 @@
-.. contents:: Topics
-
-pyATEOS
-========
+# pyATEOS
 
 Deliberately inspired by [pyATS](https://developer.cisco.com/docs/pyats/) and based on [pyEAPI](https://pyeapi.readthedocs.io/en/latest/), [jsodiff](https://github.com/fzumstein/jsondiff) and [jmespath](http://jmespath.org/) libraries, pyATEOS is a python framework for operational status tests on Arista network gear. pyATS is based on SSH show command parsed via regex. Thanks to the powerful Arista API, every show command can be returned in JSON format skipping all the parse unstructured output pain. Ideally, a day pyATS will supprt Arista API as well.
 
 ## TABLE OF CONTENT
-----
+---
 - HOW IT WORKS
 - HOW TO RUN - API
 - HOW TO RUN - CLI
