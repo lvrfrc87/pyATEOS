@@ -14,7 +14,7 @@ Deliberately inspired by [pyATS](https://developer.cisco.com/docs/pyats/) and ba
 ----
 
 ### HOW IT WORKS
-A snapshot of the operational status of a switch is taken before a config or network change and compare against a second snapshot taken after the change. A diff file is generated in .json format.
+A snapshot of the operational status of a switch is taken before a config or network change and compared against a second snapshot taken after the change. A diff file is generated in .json format.
 
 Diff example after removing a NTP server and add new one:
 
@@ -60,7 +60,7 @@ Diff example after removing a NTP server and add new one:
 }
 ```
 
-Remember, this does not show a config change, instead it shows the difference of the operational status of the NTP servers. This means that you will see a diff in `jitter` or `offset` between 2 snapshots. Example:
+Remember, this does not show a config change, instead it shows operational status difference of NTP servers configuration. This means that you will see a diff in `jitter` and `offset` between the 2 snapshots. Example:
 
 ```
 {
@@ -152,7 +152,7 @@ Remember, this does not show a config change, instead it shows the difference of
 ```
 
 ### HOW TO RUN - CLI
-An inventory must be defined as described in pyEAPI [doc](https://pyeapi.readthedocs.io/en/latest/configfile.html). A filesystem is automatically created at every code iteration (if required - idempotent). The fiename of before and after are in the follwing format `timestamp_node_test.json`. Diff filename is `(after_timpestamp - before_timestamp)_node_test.json`.
+An inventory must be defined as described in pyEAPI [doc](https://pyeapi.readthedocs.io/en/latest/configfile.html). A filesystem is automatically created at every code iteration (if required - idempotent). The fienames are in the follwing format `timestamp_node_test.json`. Diff filename is `(after_timestamp - before_timestamp)_node_test.json`.
 
 Arguments list:
 
@@ -236,7 +236,7 @@ BEFORE file ID for SNMP test: 1583161172
 Even thugh `before` and `after` test can be run using groups, every diff must be run for every single test. Is not possible (yet) to run diff for a group of test
 
 ### FILTER
-Some test outputs like interfaces or ntp have counters that constantly change. Therefore the diff will aways return a quite verbose output, making difficult to spot the what has been `insert` or `delete`. Apply `-f` or `--filter` will prune all unecessary counters.
+Some test outputs like interfaces or ntp have counters that constantly change. Therefore the diff will always return a verbose output, making difficult to spot what has been `insert` or `delete`. Apply `-f` or `--filter` will prune all unecessary counters.
 Filters are only valid for those test that return dict(dict()). For dict(list()) return, filters are transparent.
 
 Example no filter applied to NTP test
@@ -418,75 +418,4 @@ vxlan:          show interfaces vxlan 1
 ```
 
 ### ANSIBLE PYATEOS
-Good news for Ansible folks, pyATEOS is supported by Ansible. `eos_pyateos` module is available. You can add under your [collection](https://galaxy.ansible.com/docs/contributing/creating_collections.html) or under `ansible/modules/network/eos/eos_pyateos.py`. Examples, test results and modules available under `ansible/`.
-
-Here and example of Ansible playbook using `eos_pyateos`:
-
-```
-- name: run BEFORE tests.
-  eos_pyateos:
-      before: true
-      test:
-          - acl
-      group: 
-          - mgmt
-          - layer2
-      hostname: "{{ inventory_hostname }}"
-  register: result
-
-- name: save BEFORE file IDs.
-  delegate_to: 127.0.0.1
-  set_fact:
-      before_ids: "{{ result.before_file_ids }}"
-
-- name: change mgmt config on switch.
-  eos_config:
-      lines:
-          - no ntp server vrf mgmt 10.75.33.5
-          - ntp server vrf mgmt 216.239.35.4
-          - no snmp-server host 10.1.22.1 vrf mgmt version 2c snmp_pass
-          - snmp-server host 10.1.22.9 vrf mgmt version 2c snmp_pass
-
-- name: shutdown interface.
-  eos_config:
-      lines:
-          - shutdown
-      parents: interface Ethernet50/1
-
-- name: edit ACL.
-  eos_config:
-      lines:
-          - no 10
-          - 10 remark pyATEOS TEST
-      parents: ip access-list standard SNMP
-
-- name: run AFTER tests.
-  eos_pyateos:
-      after: true
-      test:
-          - acl
-      group:
-          - mgmt
-          - layer2
-      hostname: "{{ inventory_hostname }}"
-  register: result
-
-- name: save AFTER file IDs.
-  delegate_to: 127.0.0.1
-      set_fact:
-          after_ids: "{{ result.after_file_ids }}"
- 
-- name: run DIFF result.
-  eos_pyateos:
-      compare: true
-      group:
-          - mgmt
-          - layer2
-      test:
-          - acl
-      hostname: "{{ inventory_hostname }}"
-      filter: true
-      files: 
-          - "{{ before_ids }}"
-          - "{{ after_ids }}"
-```
+Good news for Ansible folks, pyATEOS is supported by Ansible. `eos_pyateos` module is available. Repo is [here](https://github.com/lvrfrc87/pyateos-ansible)
