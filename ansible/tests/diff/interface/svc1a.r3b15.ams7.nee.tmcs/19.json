@@ -1,8 +1,0 @@
-{
-    "interfaces": {
-        "Ethernet50/1": [
-            "connected",
-            "disabled"
-        ]
-    }
-}
