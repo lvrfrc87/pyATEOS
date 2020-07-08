@@ -27,6 +27,8 @@ from pyateos.plugins.stp import stp
 from pyateos.plugins.vlan import vlan
 from pyateos.plugins.vrf import vrf
 from pyateos.plugins.vxlan import vxlan
+from pyateos.plugins.bfd import bfd
+
 
 def arguments():
     '''
@@ -454,6 +456,7 @@ def bef_aft_com(**kwargs):
         'vlan',
         'vrf',
         'vxlan',
+        'bfd',
     ]
 
     if group:
@@ -546,6 +549,7 @@ def pyateos(**kwargs):
                 'vlan',
                 'vrf',
                 'vxlan',
+                'bfd,
             ]
     '''
 
