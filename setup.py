@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyateos",
-    version="0.1.7",
+    version="0.1.8",
     author="Federico Olivieri",
     author_email="lvrfrc87@gmail.com",
     description="python framework to test operational status of an Arista network",
