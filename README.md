@@ -345,6 +345,7 @@ stp
 vlan
 vrf
 vxlan
+bfd
 ```
 
 Some of the test are grouped together like: 
@@ -415,6 +416,7 @@ snmp:           show snmp host
 vlan:           show vlan
 vrf:            show vrf
 vxlan:          show interfaces vxlan 1
+bfd:            show bfd peers
 ```
 
 ### ANSIBLE PYATEOS
