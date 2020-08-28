@@ -12,7 +12,7 @@ setuptools.setup(
     scripts=['pyateos/pyateos'],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://gitlab.com/networkAutomation/pyateos",
+    url="https://github.com/lvrfrc87/pyATEOS",
     packages=setuptools.find_packages(),
     install_requires=[
         'jsondiff>=1.2.0',
