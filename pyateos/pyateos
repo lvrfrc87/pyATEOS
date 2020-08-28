@@ -316,17 +316,12 @@ class WriteFile():
                                 "ruleFilter": {
                                     "source": {
                 '''
-                return_dict = {'aclList': {}}
-
                 for acls in legal_json_diff.values():
-                    for acl_number, sequences in acls.items():
-                        for seq_number in sequences.values():
-                            for values in seq_number.values():
-                                if values.get('ruleFilter'):
-                                    return_dict['aclList'][acl_number] = {'sequence': {}}
-                                    return_dict['aclList'][acl_number]['sequence'] = seq_number
+                    for acl_change in acls.keys():
+                        if acl_change != 'insert' or acl_change != 'delete' or acl_change != None:
+                            del legal_json_diff['aclList'][acl_change]
 
-                                    return return_dict
+                            return legal_json_diff
 
 
         def replace(string, test):
@@ -393,7 +388,9 @@ class WriteFile():
 
         json_diff = str(diff(before, after, load=True, syntax='symmetric'))
         legal_json_diff = replace(json_diff, self.test)
-        diff_file_id = str((self.file_name[0] - self.file_name[1]) * -1)
+        diff_file_id = str(round(time.time())) + '_' + str(
+            (int(before_file[count]) - int(after_file[count])) * -1
+        )
 
         if not self.diff_filter:
             final_diff = json.loads(legal_json_diff)
